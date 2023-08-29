@@ -1,16 +1,11 @@
-import background from "../../public/img/2a878f6c93a6f35eec672a24a51c2284.jfif"
+import background from "../../public/img/2a878f6c93a6f35eec672a24a51c2284.png"
 import logo from "../../public/img/Logo Dos.png"
 
 const Footer = () => {
   return (
-    <div className="w-screen lg:bg-white " style={{ height: "50vh" }}>
-        <img  style={{
-      clipPath: 'circle(180% at 50% -700%)',
-      zIndex: '-1',
-      objectPosition: 'center 19%',
-      
-    }} className="hidden xl:block sm:h-2/3 w-screen object-cover " src={background} alt="Portada Jump" />
-        <div className=" bg-white items-center justify-around h-full flex xl:h-1/3 flex-col sm:flex-row">
+    <div className="w-full lg:bg-white flex flex-col gap-5 pt-1 xl:pt-9" style={{ height: "50vh" }}>
+        <img src={background} alt="Portada Jump" />
+        <div className=" bg-white items-center justify-around gap-5 flex lg:h-72 lg:pb-14 lg:pt-14 flex-col sm:flex-row">
             <div className="gap-16 flex">
                 <a href="">Home</a>
                 <a href="">Mangas</a>
