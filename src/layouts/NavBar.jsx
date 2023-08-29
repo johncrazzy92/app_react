@@ -4,7 +4,7 @@ import  logomenu  from "../../public/img/Logo Dos.png";
 
 function NavBar() {
   return (
-    <nav className='w-100 flex justify-between lg:flex'>
+    <nav className='w-100 flex justify-between lg:m-10 lg:flex'>
         <img src={menuhamburguesa} alt="hamburguesa" className="cursor-pointer" />
         <img src={logomenu} alt="Logo minga" />
       </nav>
