@@ -5,7 +5,10 @@ import onepiecemanga from "../../public/img/image 2.png";
 
 const Carousel = () => {
   return (
-    <div className="p-14 flex-col w-full h-1/3  hidden  lg:flex ">
+
+    <div className=" p-12 flex-col w-full  bg-white  hidden  lg:flex ">
+
+
       <div className="w-100 flex bg-gradient-to-t from-orange-500 to-orange-600  justify-between items-center p-8">
         <img
           src={flechacarousel}
