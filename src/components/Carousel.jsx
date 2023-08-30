@@ -1,42 +1,45 @@
-import flechacarousel from "../../public/img/Vector (Stroke).svg";
-import namiimagen from "../../public/img/283918815cce51edfc3bd01e534298c8-removebg-preview 1.png";
-import onepiecemanga from "../../public/img/image 2.png";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ArrowNext from "./ArrowNext";
+import ArrowBack from "./ArrowBack";
 
 const Carousel = () => {
+  const [categories,setCategories] = useState([])
+  useEffect(()=>{
+
+    axios(`https://minga-back-vyqy.onrender.com/categories`)
+    .then(respuesta => {
+      setCategories(respuesta.data.categories)
+    })
+    .catch(err => console.log(err)),
+    []
+  })
+  let [counter,setCounter] = useState(0)
+  let next = () => (counter < categories.length-1) ? setCounter(counter+1) : setCounter(0)
+  let back = () => (counter <= categories.length-1 && counter > 0 ) ? setCounter( counter - 1) : setCounter(categories.length-1)
   return (
 
     <div className=" p-12 flex-col w-full  bg-white  hidden  lg:flex ">
 
+      <div className="w-100 flex   justify-between items-center p-8" style={{backgroundColor: categories[counter]?.color }}>
+        <ArrowBack onClick={back}/>
 
-      <div className="w-100 flex bg-gradient-to-t from-orange-500 to-orange-600  justify-between items-center p-8">
-        <img
-          src={flechacarousel}
-          className="-rotate-180 p-2 rounded-full bg-red-200 cursor-pointer z-10"
-          alt="NavIzquierda"
-        />
+
         <div className="absolute flex gap-14">
-          <img src={namiimagen} alt="Nami Imagen" className="relative" />
-          <img src={onepiecemanga} alt="One Piece imagen" className="h-64 hidden xl:block" />
+          <img src={categories[counter]?.character_photo} alt="Nami Imagen" className="relative left-6 h-64 " />
+          <img src={categories[counter]?.cover_photo} alt="One Piece imagen" className="h-64 hidden rounded xl:block xl:relative bottom-8 left-10" />
         </div>
         <div className="flex w-4/5 flex-row-reverse h-48 items-center ">
           <div className="flex w-3/6 flex-col">
             <h2 className="text-left text-lg font-bold inline-flex gap-10 text-white">
-              Shonen
+              {categories[counter]?.name}
             </h2>
             <p className="text-left text-white leading-2">
-              Is the manga that is aimed at adolescent boys. They are series
-              with large amounts of action, in which humorous situations often
-              occur. The camaraderie between members of a collective or a combat
-              team stands out.
+              {categories[counter]?.description}
             </p>
           </div>
         </div>
-        <img
-          src={flechacarousel}
-          className="p-2 rounded-full bg-red-200 cursor-pointer"
-          alt="NavDerecha"
-        />
+        <ArrowNext onClick={next}/>
       </div>
     </div>
   );

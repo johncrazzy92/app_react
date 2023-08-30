@@ -11,7 +11,7 @@ const LayoutHome = () => {
 
   return (
     <>
-      <div className='w-full bg-cover flex flex-col justify-start lg:justify-between p-5 lg:p-0 lg:gap-16 h-screen ' style={{backgroundImage:`url(${background})`}}>
+      <div className='w-full bg-cover flex flex-col justify-start lg:justify-between  lg:p-0 lg:gap-16 h-screen ' style={{backgroundImage:`url(${background})`}}>
         <NavBar />
         <Outlet />
       </div>
