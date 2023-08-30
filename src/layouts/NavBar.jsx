@@ -6,7 +6,6 @@ import Display from "../components/Display";
 
 function NavBar() {
   const [open, setOpen] = useState(false)
-  console.log(open);
   const displayMenu = ()=>{
     setOpen(!open)
   }
@@ -17,7 +16,7 @@ function NavBar() {
         <img src={logomenu} alt="Logo minga" />
     </nav>
       
-       <Display close = {open} switch ={displayMenu}/>
+       <Display close = {open} switchMenu ={displayMenu}/>
       
     </>
   )
