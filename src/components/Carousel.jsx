@@ -20,8 +20,10 @@ const Carousel = () => {
   return (
 
     <div className=" p-12 flex-col w-full  bg-white  hidden  lg:flex ">
+
       <div className="w-100 flex   justify-between items-center p-8" style={{backgroundColor: categories[counter]?.color }}>
         <ArrowBack onClick={back}/>
+
 
         <div className="absolute flex gap-14">
           <img src={categories[counter]?.character_photo} alt="Nami Imagen" className="relative left-6 h-64 " />
