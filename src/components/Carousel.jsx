@@ -11,9 +11,9 @@ const Carousel = () => {
     .then(respuesta => {
       setCategories(respuesta.data.categories)
     })
-    .catch(err => console.log(err)),
-    []
-  })
+    .catch(err => console.log(err));
+    
+  },[] )
   let [counter,setCounter] = useState(0)
   let next = () => (counter < categories.length-1) ? setCounter(counter+1) : setCounter(0)
   let back = () => (counter <= categories.length-1 && counter > 0 ) ? setCounter( counter - 1) : setCounter(categories.length-1)
