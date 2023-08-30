@@ -21,10 +21,9 @@ const Carousel = () => {
     <div className=" p-12 flex-col w-full  bg-white  hidden  lg:flex ">
       <div className="w-100 flex   justify-between items-center p-8" style={{backgroundColor: categories[counter]?.color }}>
         <ArrowBack onClick={back}/>
-        {/* {console.log(categories)} */}
         <div className="absolute flex gap-14">
           <img src={categories[counter]?.character_photo} alt="Nami Imagen" className="relative left-6 h-64 " />
-          <img src={categories[counter]?.cover_photo} alt="One Piece imagen" className="h-64 hidden xl:block xl:relative bottom-8 left-10" />
+          <img src={categories[counter]?.cover_photo} alt="One Piece imagen" className="h-64 hidden rounded xl:block xl:relative bottom-8 left-10" />
         </div>
         <div className="flex w-4/5 flex-row-reverse h-48 items-center ">
           <div className="flex w-3/6 flex-col">
