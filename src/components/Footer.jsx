@@ -3,9 +3,11 @@ import logo from "../../public/img/Logo Dos.png"
 
 const Footer = () => {
   return (
-    <div className="w-full lg:bg-white flex flex-col gap-5 pt-1 xl:pt-9" style={{ height: "50vh" }}>
+
+    <div className="w-full lg:bg-white flex flex-col gap-5 pt-1 xl:pt-9 xl:h-96">
         <img src={background} alt="Portada Jump" />
-        <div className=" bg-white items-center justify-around gap-5 flex lg:h-72 lg:pb-14 lg:pt-14 flex-col sm:flex-row">
+        <div className=" bg-white items-center justify-around gap-5 lg:h-1/3 h-1/2 flex lg:h-72 py-8 lg:py-2 lg:pb-12 flex-col sm:flex-row">
+
             <div className="gap-16 flex">
                 <a href="">Home</a>
                 <a href="">Mangas</a>
