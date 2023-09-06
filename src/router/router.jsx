@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Index from "../components/Index";
 import LayoutHome from "../layouts/LayoutHome";
+
 import Author from "../pages/Author";
+import LayoutProfileMe from "../layouts/LayoutProfileMe";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/author",
-    element: <Author />,
+    element: <LayoutProfileMe />,
+    children: [
+      {
+        path: "/author/me",
+        element: <Author />,
+      },
+    ],
   },
 ]);
 

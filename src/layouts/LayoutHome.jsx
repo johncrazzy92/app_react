@@ -1,6 +1,5 @@
 import NavBar from "./NavBar";
 import background from "../../public/img/Background.png";
-
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 
