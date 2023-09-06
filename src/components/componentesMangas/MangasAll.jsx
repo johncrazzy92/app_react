@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MangasAll = ({ mangas_New }) => {
   return (
     <>
@@ -13,11 +15,13 @@ const MangasAll = ({ mangas_New }) => {
                 key={index}
                 className="h-56 w-2/5 lg:w-1/5 lg:h-5/6 xl:w-1/6 xl:h-full"
               >
-                <img
-                  className="h-4/5 w-full xl:h-5/6 object-cover rounded-2xl  shadow-md shadow-gray-400 cursor-pointer hover:border-4 hover:border-orange-500"
-                  src={manga.cover_photo}
-                  alt="manga"
-                />
+                <Link to={`/MangaDetails/${manga._id}`}>
+                  <img
+                    className="h-4/5 w-full xl:h-5/6 object-cover rounded-2xl  shadow-md shadow-gray-400 cursor-pointer hover:border-4 hover:border-orange-500"
+                    src={manga.cover_photo}
+                    alt="manga"
+                  />
+                </Link>
                 <p className="text-slate-600">{manga.title}</p>
               </div>
             ))
