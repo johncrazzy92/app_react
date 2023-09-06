@@ -6,7 +6,7 @@ import profile from "../../public/img/profile.jfif";
 function Display({ close, switchMenu }) {
   return (
     <div
-      className={`lg:w-3/12 w-full bg-gradient-to-t from-orange-500 to-orange-600 h-screen  flex-col absolute left-0 ${
+      className={`lg:w-4/12 w-full bg-gradient-to-t from-orange-500 to-orange-600 h-screen  flex-col absolute left-0 ${
         close ? "block" : "hidden"
       } z-20 gap-5 px-4 py-5`}
     >
