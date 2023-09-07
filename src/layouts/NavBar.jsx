@@ -10,7 +10,8 @@ function NavBar() {
   };
   return (
     <>
-      <nav className="w-100 p-4 flex justify-between lg:p-10 lg:flex">
+
+      <nav className="w-11/12 flex m-5 justify-between lg:m-10 lg:flex">
         <img
           src={menuhamburguesa}
           alt="hamburguesa"
