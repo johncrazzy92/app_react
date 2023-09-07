@@ -10,6 +10,7 @@ function NavBar() {
   };
   return (
     <>
+
       <nav className="w-11/12 flex m-5 justify-between lg:m-10 lg:flex">
         <img
           src={menuhamburguesa}
@@ -21,7 +22,7 @@ function NavBar() {
           <p className="lg:flex items-center hidden text-orange-600 text-4xl">
             Minga
           </p>
-          <p className="flex items-center  text-white text-5xl">雪</p>
+          <p className="flex items-center  text-black text-5xl">雪</p>
         </div>
       </nav>
 
