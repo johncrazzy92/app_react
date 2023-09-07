@@ -26,10 +26,10 @@ const Chapters = () => {
       <div className='flex flex-col w-full mb-2 ps-4 pe-4'>
         <p className='text-center mb-4'>Chapters</p>
         <div className='flex'>
-            <Link to='/manga/64f4cb2e18c68f2a0351af8c' className='w-1/2 h-8 bg-gray-200 rounded-full text-gray text-center border border-slate-300 hover:border-black'>
+            <Link to={'/manga/'+ id} className='w-1/2 h-8 bg-gray-200 rounded-full text-gray text-center border border-slate-300 hover:border-black'>
                 Manga
             </Link>
-            <Link to='/chapters' className='h-8 w-1/2 bg-orange-500 rounded-full text-white text-center border hover:border-black'>
+            <Link to='#' className='h-8 w-1/2 bg-orange-500 rounded-full text-white text-center border hover:border-black'>
                 Chapters
             </Link>
         </div>

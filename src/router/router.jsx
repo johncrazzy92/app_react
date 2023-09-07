@@ -29,10 +29,11 @@ const router = createBrowserRouter([
   {
     path: "/chapters/:id",
     element: <Chapters />,
-  }
+  },
+{
     path: "/mangas/:page",
     element: <Mangas />,
-  },
+  }
 ]);
 
 export default router;
