@@ -1,8 +1,12 @@
 import UbicationIcon from "../components/icons/ubicationIcon";
 import BirthIcon from "../components/icons/BirthIcon";
 import EditIcon from "../components/icons/EditIcon";
+import React from "react";
 
 const AuthorProfile = ({ oneAuthor }) => {
+  function upper(name) {
+    return name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+  }
   return (
     <>
       <div className="w-full  gap-6  flex justify-center lg:justify-start lg:px-16 items-center mb-6 lg:mb-0 ">
@@ -13,11 +17,15 @@ const AuthorProfile = ({ oneAuthor }) => {
         />
         <div className="text-gray-500">
           <h1 className="text-black text-lg font-medium lg:text-3xl">
-            {oneAuthor.name}
+            {upper(oneAuthor.name) || "autor name"}{" "}
+            {oneAuthor.last_name || upper(oneAuthor.last_name) || ""}
           </h1>
           <div className="flex items-center">
             <UbicationIcon />
-            <p>{oneAuthor.city + ", " + oneAuthor.country}</p>
+            <p>
+              {upper(oneAuthor.city) || oneAuthor.city || "city"},{" "}
+              {upper(oneAuthor.country) || oneAuthor.country || "country"}
+            </p>
           </div>
           <div className="flex items-center">
             <BirthIcon />

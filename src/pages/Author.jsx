@@ -16,7 +16,7 @@ const Author = () => {
         console.log(err);
       });
   }, []);
-  console.log(profile._id);
+
   return (
     <>
       <AuthorProfile oneAuthor={profile} />
