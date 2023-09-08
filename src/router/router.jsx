@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 {
     path: "/mangas/:page",
     element: <Mangas />,
-  }
+  },
                                    {  
     path: "/chapter",
     element: <Chapter />,

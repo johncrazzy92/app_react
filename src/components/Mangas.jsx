@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useNavigate, Link, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from '../layouts/NavBar';
 import Footer from './Footer';
@@ -39,7 +38,7 @@ const Mangas = () => {
 
     const getCategories = () => axios(`http://localhost:8080/categories`)
         .then(res => {
-            setCategories(res.data)
+            setCategories(res.data.response)
             console.log(res.data)
         })
         .catch(err => console.log(err))
@@ -107,7 +106,7 @@ const Mangas = () => {
                 {noElements ? (
                     <div>{noElementsMessage}</div>) : (
                     mangas.map((manga) => (
-                        <div className='w-72 bg-gray-200 justify-between md:w-80 lg:w-96 h-36 lg:h-48 flex' key={manga._id}>
+                        <Link to={`/manga/${manga.id}`} className='w-72 bg-gray-200 justify-between md:w-80 lg:w-96 h-36 lg:h-48 flex' key={manga._id}>
                             <div>
                                 <div>
                                     <div>{manga.title}</div>
@@ -118,7 +117,7 @@ const Mangas = () => {
                                 </div>
                             </div>
                             <img className='' src={manga.cover_photo} alt="" />
-                        </div>
+                        </Link>
                     ))
                 )}
             </div>

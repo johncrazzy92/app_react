@@ -36,7 +36,7 @@ const Page = () => {
 
     const handlePrev = () => { 
         if (Number(page) <= 1) {
-            navigate(`/manga/${chapter.manga_id}/1`)
+            navigate(`/manga/${chapter.manga_id}`)
         }
         else{
             navigate(`/chapter/${id}/${Number(page)-1} `)
