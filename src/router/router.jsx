@@ -5,7 +5,8 @@ import Author from "../pages/Author";
 import MangaDetails from "../components/MangaDetails";
 import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
-
+import Page from "../pages/page";  
+import Chapter from "../components/Chapter";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +17,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Index />,
       },
+
     ],
   },
   {
     path: "/author",
     element: <Author />,
   },
+
   {
     path: "/manga/:id",
     element: <MangaDetails />,
@@ -34,6 +37,15 @@ const router = createBrowserRouter([
     path: "/mangas/:page",
     element: <Mangas />,
   }
+                                   {  
+    path: "/chapter",
+    element: <Chapter />,
+ },
+  {
+    path: "/chapter/:id/:page",
+    element: <Page />, 
+  },
+
 ]);
 
 export default router;

@@ -8,7 +8,9 @@ const LayoutHome = () => {
   return (
     <>
       <div
+
         className="w-full bg-cover bg-left flex flex-col justify-start lg:justify-between  lg:gap-16 h-full"
+    
         style={{ backgroundImage: `url(${background})` }}
       >
         <NavBar />
