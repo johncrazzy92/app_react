@@ -1,9 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Index from "../components/Index";
 import LayoutHome from "../layouts/LayoutHome";
-
 import Author from "../pages/Author";
 import LayoutProfileMe from "../layouts/LayoutProfileMe";
+import MangaDetails from "../components/MangaDetails";
+import Chapters from "../components/Chapters";
+import Mangas from "../components/Mangas";
+import Page from "../pages/page";  
+import Chapter from "../components/Chapter";
+
 
 const router = createBrowserRouter([
   {
@@ -14,6 +19,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Index />,
       },
+
     ],
   },
   {
@@ -26,6 +32,28 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  {
+    path: "/manga/:id",
+    element: <MangaDetails />,
+  },
+  {
+    path: "/chapters/:id",
+    element: <Chapters />,
+  },
+{
+    path: "/mangas/:page",
+    element: <Mangas />,
+  },
+                                   {  
+    path: "/chapter",
+    element: <Chapter />,
+ },
+  {
+    path: "/chapter/:id/:page",
+    element: <Page />, 
+  },
+
 ]);
 
 export default router;
