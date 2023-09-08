@@ -6,9 +6,8 @@ import LayoutProfileMe from "../layouts/LayoutProfileMe";
 import MangaDetails from "../components/MangaDetails";
 import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
-import Page from "../pages/page";  
+import Page from "../pages/page";
 import Chapter from "../components/Chapter";
-
 
 const router = createBrowserRouter([
   {
@@ -19,7 +18,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <Index />,
       },
-
     ],
   },
   {
@@ -41,19 +39,22 @@ const router = createBrowserRouter([
     path: "/chapters/:id",
     element: <Chapters />,
   },
-{
+  {
     path: "/mangas/:page",
     element: <Mangas />,
   },
-                                   {  
+  {
+    path: "/mangas",
+    element: <Mangas />,
+  },
+  {
     path: "/chapter",
     element: <Chapter />,
- },
+  },
   {
     path: "/chapter/:id/:page",
-    element: <Page />, 
+    element: <Page />,
   },
-
 ]);
 
 export default router;
