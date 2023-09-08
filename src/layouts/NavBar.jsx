@@ -1,5 +1,5 @@
 import menuhamburguesa from "../../public/img/Menu.png";
-
+import logoSimple from "../../public/img/雪.png";
 import { useState } from "react";
 import Display from "../components/Display";
 
@@ -19,13 +19,11 @@ function NavBar() {
           onClick={displayMenu}
           className="cursor-pointer"
         />
-        <div className="flex">
+        <div className="flex items-center">
           <p className="lg:flex items-center hidden text-orange-600 text-4xl">
             Minga
           </p>
-
           <p className="flex items-center  text-black text-5xl">雪</p>
-
         </div>
       </nav>
 
