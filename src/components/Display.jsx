@@ -34,12 +34,16 @@ function Display({ close, switchMenu }) {
           >
             Home
           </Link>
-          <a
+          <Link
             className="py-3 rounded hover:bg-white hover:text-orange-600"
-            href=""
+            to={"/mangas/1"}
           >
+            Mangas
+          </Link>
+          <Link to={"/register"}
+            className="py-3 rounded hover:bg-white hover:text-orange-600">
             Register
-          </a>
+          </Link>
           <a
             className="py-3 rounded hover:bg-white hover:text-orange-600"
             href=""
