@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import flechaManga from "../../public/img/FlechaManga.svg";
+import NavBar from "../layouts/NavBar";
+import Footer from "../components/Footer";
 
 const Page = () => {
   const APIurl = "http://localhost:8080";
@@ -44,7 +46,8 @@ const Page = () => {
   return (
     <>
       <div className="h-screen w-full">
-        <div className="w-full h-1/6 bg-gradient-to-t from-orange-500 to-orange-600 text-center flex flex-col justify-center items-center">
+      <NavBar />
+        <div className="w-full h-12 bg-gradient-to-t from-orange-500 to-orange-600 text-center flex flex-col justify-center items-center">
           <p className="text-white text-xs">n. de cap {Number(page)}</p>
           <p className="text-white text-xs"> nombre del cap{chapter?.title}</p>
         </div>
@@ -71,6 +74,7 @@ const Page = () => {
         </div>
         <PageComments />
       </div>
+      <Footer />
     </>
   );
 };

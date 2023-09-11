@@ -8,6 +8,7 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
+import Register from "../components/Register";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/chapter/:id/:page",
     element: <Page />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
