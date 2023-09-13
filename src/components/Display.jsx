@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import profile from "../../public/img/profile.jfif";
 
 function Display({ close, switchMenu }) {
+  const user = {
+    role: 1,
+  };
   return (
     <>
       <div
@@ -46,6 +49,16 @@ function Display({ close, switchMenu }) {
           >
             Sign in
           </a>
+          {(user.role === 1 || user.role === 2 || user.role === 3) && (
+            <Link
+              className="py-3 rounded hover:bg-white hover:text-orange-600"
+              to={
+                user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+              }
+            >
+              New Manga
+            </Link>
+          )}
         </div>
       </div>
     </>
