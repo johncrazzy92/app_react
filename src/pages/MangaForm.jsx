@@ -1,21 +1,30 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Alert from "../components/componentesMangas/Alert";
+import { useDispatch, useSelector } from "react-redux";
+import { postOneManga } from "../../redux/actions/mangaAction";
 
+//----------------------------
 const MangaForm = () => {
   const [category, setCategory] = useState([]);
   const [alert, setAlert] = useState([]);
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
-
+  //---------dispatch
+  const dispatch = useDispatch();
+  //---------------store
+  const mangaReducer = useSelector((store) => store.mangaPost);
+  console.log(mangaReducer);
+  //--------------------------------------------------------------------------form to post
   const titleInput = useRef();
   const categoryInput = useRef();
   const imageInput = useRef();
   const descriptionInput = useRef();
+  //-----------post manga
   async function postManga(event) {
     event.preventDefault();
     const mangaToPost = {
-      author_id: "64f16377869bb8da08460527",
+      author_id: "64f16377869bb8da08460527", // id necesario
       title: titleInput.current.value.toLowerCase(),
       category_id: categoryInput.current.value.toLowerCase(),
       cover_photo: imageInput.current.value.toLowerCase(),
@@ -27,14 +36,14 @@ const MangaForm = () => {
         "http://localhost:8080/mangas",
         mangaToPost
       );
+      dispatch(postOneManga(responsed.data.response));
+      //---------alerts
       setAlert([responsed.data.message]);
-      console.log(responsed);
     } catch (err) {
-      console.log(err.response.data.message);
-      setAlert(err.response.data.message);
+      setAlert([err.response.data.message]);
     }
   }
-
+  //-------------selector
   useEffect(() => {
     axios
       .get("http://localhost:8080/categories")
@@ -45,17 +54,18 @@ const MangaForm = () => {
         console.log(err);
       });
   }, []);
+  //-------------------------------render
   return (
     <>
       {show && <Alert alert={alert} setShow={setShow} show={show} />}
       <div className="w-full h-screen flex justify-center items-center gap-24">
-        <div>
-          <h1 className="font-semibold text-4xl">New Manga</h1>
+        <div className="flex flex-col gap-20">
+          <h1 className="font-semibold text-center text-4xl">New Manga</h1>
           <form className=" flex flex-col gap-3" action="">
             <label htmlFor="title"></label>
             <input
               ref={titleInput}
-              className="border-b-2 border-black w-60"
+              className="border-b border-1 border-black w-60"
               type="text"
               id="title"
               name="title"
@@ -65,12 +75,12 @@ const MangaForm = () => {
             <label htmlFor="category"></label>
             <select
               ref={categoryInput}
-              className="border-b-2 border-black w-60"
+              className="border-b border-1 border-black w-60"
               id="category"
               name="category"
               required
             >
-              <option value="" disabled>
+              <option value="" disabled selected>
                 Insert Category
               </option>
               {category &&
@@ -86,7 +96,7 @@ const MangaForm = () => {
             <input
               onChange={() => setImage(imageInput.current.value)}
               ref={imageInput}
-              className="border-b-2 border-black w-60"
+              className="border-b border-1 border-black w-60"
               type="url"
               id="photo"
               name="photo"
@@ -96,7 +106,7 @@ const MangaForm = () => {
             <label className="" htmlFor="description"></label>
             <input
               ref={descriptionInput}
-              className="border-b-2 border-black w-60"
+              className="border-b border-1 border-black w-60"
               type="text"
               id="description"
               name="description"
@@ -113,7 +123,9 @@ const MangaForm = () => {
           </form>
         </div>
         <img
-          className={`h-4/6 hidden ${image && "lg:flex"} self-center`}
+          className={`h-4/6 hidden rounded-md ${
+            image && "lg:flex"
+          } self-center`}
           src={image}
           alt="image"
         />
