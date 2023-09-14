@@ -8,6 +8,7 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
+import MangaForm from "../pages/MangaForm";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,16 @@ const router = createBrowserRouter([
   {
     path: "/chapter/:id/:page",
     element: <Page />,
+  },
+  {
+    path: "/manga-form",
+    element: <LayoutProfileMe />,
+    children: [
+      {
+        path: "/manga-form",
+        element: <MangaForm />,
+      },
+    ],
   },
 ]);
 
