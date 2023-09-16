@@ -41,7 +41,6 @@ const Page = () => {
   console.log(chapter);
   console.log(next);
   const handleNext = () => {
-    // setChange(change + 1)
     if (Number(page) >= chapter.pages.length - 1) {
       navigate(`/chapter/${next}/${1}`);
     } else {
