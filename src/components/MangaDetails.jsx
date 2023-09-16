@@ -21,8 +21,9 @@ const MangaDetails = () => {
     }, [])
 
     return (
-        <div className='w-full h-full flex flex-col bg-gray-200 md:gap-4'>
+        <>
             <NavBar />
+        <div className='w-full h-full pt-28 flex flex-col bg-gray-200 md:gap-4'>
             <div className='w-full h-screen flex flex-col items-center'>
                 <img className='w-full sm:w-60 h-80 lg:w-80 lg:object-cover p-4 rounded-3xl' src={manga?.cover_photo} alt="imagen del manga" />
                 <p className=' m-4 text-3xl text-center'>{manga?.title}</p>
@@ -59,6 +60,7 @@ const MangaDetails = () => {
 
             </div>
         </div>
+        </>
     )
 }
 
