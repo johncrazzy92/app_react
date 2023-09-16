@@ -7,7 +7,7 @@ import flechaManga from "../../public/img/FlechaManga.svg";
 import NavBar from "../layouts/NavBar";
 import Footer from "../components/Footer";
 import { useSelector, useDispatch } from 'react-redux';
-import { saveChapter } from '../store/actions/chapters';
+import { saveChapter } from '../redux/actions/chapters';
 
 const Page = () => {
   const APIurl = "http://localhost:8080";
