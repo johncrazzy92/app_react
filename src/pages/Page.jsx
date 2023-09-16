@@ -27,7 +27,6 @@ const Page = () => {
   console.log(chapter);
   console.log(next);
   const handleNext = () => {
-    // setChange(change + 1)
     if (Number(page) >= chapter.pages.length - 1) {
       navigate(`/chapter/${next}/${1}`);
     } else {
@@ -52,7 +51,7 @@ const Page = () => {
           <p className="text-white text-xs"> nombre del cap{chapter?.title}</p>
         </div>
         <div className="w-full h-4/6 mt-5 flex items-center justify-center">
-          <div onClick={handlePrev} className="w-1/2 border">
+          <div onClick={handlePrev} className="w-1/2">
             <img
               className=" cursor-pointer absolute left-5 bg-white rounded-full p-2 opacity-50"
               src={flechaManga}
