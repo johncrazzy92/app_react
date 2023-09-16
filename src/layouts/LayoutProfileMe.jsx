@@ -5,8 +5,8 @@ import { Outlet } from "react-router-dom";
 const LayoutProfileMe = () => {
   return (
     <>
-      <div className="w-full  flex flex-col lg:justify-between gap-1 lg:p-0 lg:gap-1 h-screen">
         <NavBar />
+      <div className="w-full pt-28 flex flex-col lg:justify-between gap-1 lg:pt-28 lg:gap-1 h-screen">
         <Outlet />
       </div>
       <Footer />
