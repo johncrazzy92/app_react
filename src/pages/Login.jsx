@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import axios from "axios";
 import saveAuthors from '../redux/actions/me_authors';
-import Alert from '../components/Alert.jsx';
+import Alert from '../components/componentesMangas/Alert.jsx';
 
 
 const Login = () => {
@@ -53,7 +53,7 @@ const Login = () => {
                     <div className='flex flex-col justify-center items-center mt-40 gap-2'>
                         <div className='flex items-center'>
                             <p className=' text-3xl font-bold text-orange-500 '>Minga</p>
-                            <img className='w-8 h-8' src="public/img/雪.png" alt="" />
+                            <img className='w-8 h-8' src="public/img/logoSimple.png" alt="" />
                         </div>
                         <div className='flex items-center gap-2'>
                             <p className='text-3xl font-bold text-black'>Welcome</p>

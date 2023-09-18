@@ -9,7 +9,9 @@ import logoutUser from "../redux/actions/logout";
 function Display({ close, switchMenu }) {
   const { user, token } = useSelector((store) => store.me_authorsReducer);
   const dispatch = useDispatch();
-
+  const user1 = {
+    role:1,
+  }
   const signout = async () => {
     const headers = {
       headers: { Authorization: `Bearer ${token}` },
@@ -24,9 +26,7 @@ function Display({ close, switchMenu }) {
       console.error("Error al cerrar la sesión:", error.response);
     }
   };
-  const user = {
-    role: 1,
-  };
+
 
   return (
     <>
@@ -49,12 +49,20 @@ function Display({ close, switchMenu }) {
               <img src={user.photo} alt="" />
               <p>{user.email}</p>
               <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
+              <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/author/me"}
+          >
+            Profile
+          </Link>            
             </>
           ) : (
             <>
-              <a className="py-3 rounded hover:bg-white hover:text-orange-600" href="">
+              <Link
+                to={"/register"}
+                className="py-3 rounded hover:bg-white hover:text-orange-600">
                 Register
-              </a>
+              </Link>
               <Link
                 to={"/login"}
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
@@ -64,35 +72,18 @@ function Display({ close, switchMenu }) {
               </Link>
             </>
           )}
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/author/me"}
-          >
-            Profile
-          </Link>
+          
           <Link
             className="py-3 rounded hover:bg-white hover:text-orange-600"
             to={"/"}
           >
             Home
           </Link>
-          <a
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            href=""
-          >
-            Register
-          </a>
-          <a
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            href=""
-          >
-            Sign in
-          </a>
-          {(user.role === 1 || user.role === 2 || user.role === 3) && (
+          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
             <Link
               className="py-3 rounded hover:bg-white hover:text-orange-600"
               to={
-                user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
               }
             >
               New Manga
@@ -104,12 +95,7 @@ function Display({ close, switchMenu }) {
           >
             Mangas
           </Link>
-          <Link
-            to={"/register"}
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-          >
-            Register
-          </Link>
+
 
         </div>
       </div>
