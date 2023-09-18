@@ -22,7 +22,6 @@ function Display({ close, switchMenu }) {
             alt="close menu"
           />
         </div>
-
         <div className=" text-white flex flex-col text-center gap-3 p-5">
           <Link
             className="py-3 rounded hover:bg-white hover:text-orange-600"
@@ -57,24 +56,26 @@ function Display({ close, switchMenu }) {
             >
               New Manga
             </Link>
-            <Link
-                  className="py-3 rounded hover:bg-white hover:text-orange-600"
-                  to={"/mangas/1"}
-               >
-                  Mangas
-               </Link>
-               <Link to={"/register"}
-                  className="py-3 rounded hover:bg-white hover:text-orange-600">
-                  Register
-               </Link>
           )}
+          <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/mangas/1"}
+          >
+            Mangas
+          </Link>
+          <Link
+            to={"/register"}
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+          >
+            Register
+          </Link>
         </div>
       </div>
     </>
   );
 }
 Display.propTypes = {
-   close: PropTypes.bool.isRequired,
-   switchMenu: PropTypes.func.isRequired,
+  close: PropTypes.bool.isRequired,
+  switchMenu: PropTypes.func.isRequired,
 };
 export default Display;

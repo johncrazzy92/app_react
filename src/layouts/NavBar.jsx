@@ -1,6 +1,7 @@
 import menuhamburguesa from "../../public/img/Menu.png";
 import { useState } from "react";
 import Display from "../components/Display";
+import logoSimple from "../../public/img/logoSimple.png";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
