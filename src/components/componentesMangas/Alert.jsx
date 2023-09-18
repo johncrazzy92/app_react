@@ -1,5 +1,4 @@
 const Alert = ({ alert, setShow, show }) => {
-  console.log(alert)
   return (
     <div className="z-50 bg-black bg-opacity-50 h-screen w-full absolute flex justify-center items-center">
       <div className="bg-white min-h-20 w-64 rounded-lg">
@@ -28,3 +27,4 @@ const Alert = ({ alert, setShow, show }) => {
 };
 
 export default Alert;
+

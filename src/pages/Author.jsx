@@ -8,7 +8,7 @@ const Author = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/authors/me/64f4caa868b137c836815bc1")
+      .get("http://localhost:8080/authors/me/64f16377869bb8da08460527")
       .then((res) => {
         setProfile(res.data.author);
       })

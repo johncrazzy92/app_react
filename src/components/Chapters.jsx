@@ -37,7 +37,6 @@ const Chapters = () => {
             </Link>
           </div>
         </div>
-
         {chapters.length > 0 ? chapters?.map((chapter) => (
           <div key={chapter?._id} className='flex justify-center items-center'>
             <img
@@ -60,7 +59,6 @@ const Chapters = () => {
         )) : null}
       </div>
     </>
-
   );
 };
 

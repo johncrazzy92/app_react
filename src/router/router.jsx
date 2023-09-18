@@ -8,12 +8,14 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
+import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
-import NotAllowed from "../components/NotAllowed";
+import NotAllow from "../components/NotAllow";
 
 const isLogged = true;
+
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,16 @@ const router = createBrowserRouter([
     element: <Page />,
   },
   {
+    path: "/manga-form",
+    element: <LayoutProfileMe />,
+    children: [
+      {
+        path: "/manga-form",
+        element: <MangaForm />,
+      },
+    ],
+  },
+   {
     path: "/register",
     element: <Register />,
   },
@@ -71,10 +83,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/manga_id/chapther-form",
-    element: isLogged ? <ChapterForm /> : <NotAllowed />,
+    element: isLogged ? <ChapterForm /> : <NotAllow />,
   },
 
-  
 ]);
 
 export default router;
