@@ -3,14 +3,19 @@ import axios from "axios";
 import MangasSwitch from "./MangasSwitch";
 import MangasAll from "./MangasAll";
 import LogoMinga from "../../../public/img/Logo Dos.png";
+import { useDispatch } from 'react-redux';
+import setMangasNews from "../../redux/actions/mangas_news";
 
 const MangasAuthor = ({ profileId }) => {
+  const dispatch = useDispatch()
   const [mangas_New, setMangas_New] = useState({});
   useEffect(() => {
     axios
       .get(`http://localhost:8080/mangas/new/${profileId}`)
       .then((res) => {
         setMangas_New(res.data);
+        dispatch(setMangasNews(res.data))
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
