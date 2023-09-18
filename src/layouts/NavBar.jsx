@@ -1,5 +1,4 @@
 import menuhamburguesa from "../../public/img/Menu.png";
-import logoSimple from "../../public/img/雪.png";
 import { useState } from "react";
 import Display from "../components/Display";
 

@@ -17,7 +17,6 @@ const MangaDetails = () => {
   useEffect(() => {
     getManga();
   }, []);
-
   return (
     <>
       <NavBar />
@@ -90,5 +89,6 @@ const MangaDetails = () => {
     </>
   );
 };
+
 
 export default MangaDetails;

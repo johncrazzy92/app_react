@@ -5,12 +5,12 @@ const Alert = ({ alert, setShow, show }) => {
         <div className="h-3/5 flex items-center flex-col gap-2 p-3">
           {alert
             ? alert.map((alerta, index) => {
-                return (
-                  <p key={index} className="text-center font-semibold">
-                    {alerta}
-                  </p>
-                );
-              })
+              return (
+                <p key={index} className="text-center font-semibold">
+                  {alerta?.join && alerta.join(`, `) || alerta}
+                </p>
+              );
+            })
             : null}
         </div>
         <div className="h-10">
@@ -27,3 +27,4 @@ const Alert = ({ alert, setShow, show }) => {
 };
 
 export default Alert;
+

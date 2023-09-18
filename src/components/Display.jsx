@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import cross from "../../public/img/filled.svg";
 import { Link } from "react-router-dom";
-import profile from "../../public/img/profile.jfif";
 
 function Display({ close, switchMenu }) {
   const user = {
@@ -58,6 +57,16 @@ function Display({ close, switchMenu }) {
             >
               New Manga
             </Link>
+            <Link
+                  className="py-3 rounded hover:bg-white hover:text-orange-600"
+                  to={"/mangas/1"}
+               >
+                  Mangas
+               </Link>
+               <Link to={"/register"}
+                  className="py-3 rounded hover:bg-white hover:text-orange-600">
+                  Register
+               </Link>
           )}
         </div>
       </div>
@@ -65,7 +74,7 @@ function Display({ close, switchMenu }) {
   );
 }
 Display.propTypes = {
-  close: PropTypes.bool.isRequired,
-  switchMenu: PropTypes.func.isRequired,
+   close: PropTypes.bool.isRequired,
+   switchMenu: PropTypes.func.isRequired,
 };
 export default Display;
