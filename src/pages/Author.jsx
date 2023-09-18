@@ -2,15 +2,20 @@ import AuthorProfile from "../components/AuthorProfile";
 import MangasAuthor from "../components/componentesMangas/MangasAuthor";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+
 
 const Author = () => {
   const [profile, setProfile] = useState({});
-
+  const authorId = useSelector((store)=>store.me_authorsReducer.user.author)
+  console.log(authorId)
+  console.log(profile)
   useEffect(() => {
     axios
-      .get("http://localhost:8080/authors/me/64f4caa868b137c836815bc1")
+      .get("http://localhost:8080/authors/me/" + authorId)
       .then((res) => {
         setProfile(res.data.author);
+        
       })
       .catch((err) => {
         console.log(err);

@@ -8,6 +8,10 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
+import { element } from "prop-types";
+import Login from "../pages/Login";
+
+
 
 const router = createBrowserRouter([
   {
@@ -55,6 +59,11 @@ const router = createBrowserRouter([
     path: "/chapter/:id/:page",
     element: <Page />,
   },
+  { 
+    path: "/login",
+    element: <Login/>,
+  },
+  
 ]);
 
 export default router;
