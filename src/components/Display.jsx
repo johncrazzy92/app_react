@@ -24,6 +24,9 @@ function Display({ close, switchMenu }) {
       console.error("Error al cerrar la sesión:", error.response);
     }
   };
+  const user = {
+    role: 1,
+  };
 
   return (
     <>
@@ -40,19 +43,11 @@ function Display({ close, switchMenu }) {
             alt="close menu"
           />
         </div>
-
         <div className=" text-white flex flex-col text-center gap-3 p-5">
           {token ? (
             <>
               <img src={user.photo} alt="" />
               <p>{user.email}</p>
-              <Link to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Home</Link>
-              <Link
-                className="py-3 rounded hover:bg-white hover:text-orange-600"
-                to={"/author/me"}
-              >
-                Profile
-              </Link>
               <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
             </>
           ) : (
@@ -69,6 +64,53 @@ function Display({ close, switchMenu }) {
               </Link>
             </>
           )}
+          <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/author/me"}
+          >
+            Profile
+          </Link>
+          <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/"}
+          >
+            Home
+          </Link>
+          <a
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            href=""
+          >
+            Register
+          </a>
+          <a
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            href=""
+          >
+            Sign in
+          </a>
+          {(user.role === 1 || user.role === 2 || user.role === 3) && (
+            <Link
+              className="py-3 rounded hover:bg-white hover:text-orange-600"
+              to={
+                user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+              }
+            >
+              New Manga
+            </Link>
+          )}
+          <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/mangas/1"}
+          >
+            Mangas
+          </Link>
+          <Link
+            to={"/register"}
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+          >
+            Register
+          </Link>
+
         </div>
       </div>
     </>

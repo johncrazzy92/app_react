@@ -1,29 +1,32 @@
-const Alert = ({ alert, setShow, show }) => {
-    return (
-      <div className="z-50 bg-black bg-opacity-50 h-screen w-full absolute flex justify-center items-center">
-        <div className="bg-white min-h-20 w-64 rounded-lg">
-          <div className="h-3/5 flex items-center flex-col gap-2 p-3">
-            {alert
-              ? alert.map((alerta, index) => {
-                  return (
-                    <p key={index} className="text-center font-semibold">
-                      {alerta}
-                    </p>
-                  );
-                })
-              : null}
-          </div>
-          <div className="h-10">
-            <p
-              onClick={() => setShow(!show)}
-              className="text-sky-400 cursor-pointer font-semibold text-xl text-center border-t border-1"
-            >
-              Acept
-            </p>
-          </div>
-        </div>
+
+const Alert = ({ show, setShow, message, data }) => {
+  return (
+    <div className='flex h-screen justify-center items-center absolute'>
+      <div className='min-h-32 w-64 bg-white flex flex-col items-center justify-center rounded-lg'>
+        {(message && message.length > 0) ? (
+          message.map((errorMessage, index) => (
+            <>
+                <h1
+                  className='min-h-2/3 w-full text-center border-b-2 rounded-t-lg'
+                >
+                  {errorMessage}
+                </h1>
+            </>
+          ))
+        ) : (
+          data && data.message ? (
+            <h1 className='min-h-2/3 w-full text-center border-b-2 rounded-t-lg'>
+              {data.message}
+            </h1>
+          ) : null
+        )}
+        <button onClick={() => setShow(!show)} className='h-1/3 w-full rounded-b-lg text-orange-600'>
+          Accept
+        </button>
       </div>
-    );
-  };
-  
-  export default Alert;
+    </div>
+  );
+};
+
+export default Alert;
+

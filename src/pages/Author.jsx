@@ -12,7 +12,9 @@ const Author = () => {
   console.log(profile)
   useEffect(() => {
     axios
+
       .get("http://localhost:8080/authors/me/" + authorId)
+
       .then((res) => {
         setProfile(res.data.author);
         

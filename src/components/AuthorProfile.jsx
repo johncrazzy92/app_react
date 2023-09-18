@@ -9,7 +9,7 @@ const AuthorProfile = ({ oneAuthor }) => {
   }
   return (
     <>
-      <div className="w-full  gap-6  flex justify-center lg:justify-start lg:px-16 items-center mb-6 lg:mb-0 ">
+      <div className="w-full h-1/3  gap-6  flex justify-center lg:justify-start lg:px-16 items-center  lg:mb-0 ">
         <img
           className="h-14 w-14 object-cover lg:w-52 lg:h-52 rounded-full border-2  border-black"
           src={oneAuthor.photo}
