@@ -15,7 +15,7 @@ const MangaForm = () => {
   //---------------store
   const mangaReducer = useSelector((store) => store.mangaPost);
   console.log(mangaReducer);
-  //--------------------------------------------------------------------------form to post
+  //--------------------------------------------------------------------------form to post --
   const titleInput = useRef();
   const categoryInput = useRef();
   const imageInput = useRef();
@@ -24,7 +24,7 @@ const MangaForm = () => {
   async function postManga(event) {
     event.preventDefault();
     const mangaToPost = {
-      author_id: "64f16377869bb8da08460527", // id necesario
+      author_id: "64f16377869bb8da08460527", // id necesario  -------->>>> cambiar por token
       title: titleInput.current.value.toLowerCase(),
       category_id: categoryInput.current.value.toLowerCase(),
       cover_photo: imageInput.current.value.toLowerCase(),

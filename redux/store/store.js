@@ -3,6 +3,6 @@ import mangaPostReducer from "../reducers/mangaReducer";
 
 export const store = configureStore({
   reducer: {
-    mangaPost: mangaPostReducer,
+    mangaPostReducer,
   },
 });
