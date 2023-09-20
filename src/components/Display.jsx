@@ -8,6 +8,7 @@ import logoutUser from "../redux/actions/logout";
 
 function Display({ close, switchMenu }) {
   const { user, token } = useSelector((store) => store.me_authorsReducer);
+  console.log(user)
   const dispatch = useDispatch();
   const user1 = {
     role:1,
@@ -44,7 +45,7 @@ function Display({ close, switchMenu }) {
           />
         </div>
         <div className=" text-white flex flex-col text-center gap-3 p-5">
-          {token ? (
+          {user ? (
             <>
               <img src={user.photo} alt="" />
               <p>{user.email}</p>
@@ -54,7 +55,18 @@ function Display({ close, switchMenu }) {
             to={"/author/me"}
           >
             Profile
-          </Link>            
+          </Link>  
+          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
+            <Link
+              className="py-3 rounded hover:bg-white hover:text-orange-600"
+              to={
+                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
+              }
+            >
+              New Manga
+            </Link>
+          )} 
+                   
             </>
           ) : (
             <>
@@ -79,24 +91,7 @@ function Display({ close, switchMenu }) {
           >
             Home
           </Link>
-          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
-            <Link
-              className="py-3 rounded hover:bg-white hover:text-orange-600"
-              to={
-                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
-              }
-            >
-              New Manga
-            </Link>
-          )}
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/mangas/1"}
-          >
-            Mangas
-          </Link>
-
-
+          
         </div>
       </div>
     </>
