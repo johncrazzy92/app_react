@@ -1,10 +1,11 @@
-
 import { configureStore } from '@reduxjs/toolkit'
 import mangasReducer from './reducers/mangasReducer.js'
 import chapterReducer from './reducers/chapters.js'
 import me_authorsReducer from "./reducers/me_authorsReducer.js"
 import mangas_news from "./reducers/mangas_news.js"
 import mangaPostReducer from "./reducers/mangaReducer.js"
+import commentReducer from "./reducers/commentReducer.js"
+
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         me_authorsReducer,
         mangas_news,
         mangaPostReducer,
+        commentReducer,
     }
 })
 

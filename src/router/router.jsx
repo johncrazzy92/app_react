@@ -8,20 +8,18 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
-
-import { element } from "prop-types";
 import Login from "../pages/Login";
-
-
 import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
+import authorsReducer from "../redux/reducers/me_authorsReducer";
+import ListComments from "../components/ListComment";
+import Comments from "../components/Comment";
+import Comment from "../components/Comment";
 
-const isLogged = true;
-
-
+const isLogged = authorsReducer.isLogged;
 
 const router = createBrowserRouter([
   {
@@ -70,11 +68,11 @@ const router = createBrowserRouter([
     element: <Page />,
   },
 
-  { 
+  {
     path: "/login",
-    element: <Login/>,
+    element: <Login />,
   },
-  
+
   {
     path: "/manga-form",
     element: <LayoutProfileMe />,
@@ -85,7 +83,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-   {
+  {
     path: "/register",
     element: <Register />,
   },
@@ -94,9 +92,24 @@ const router = createBrowserRouter([
     element: <Alert />,
   },
   {
-    path: "/manga_id/chapther-form",
+    path: "/:id/chapter-form",
     element: isLogged ? <ChapterForm /> : <NotAllow />,
   },
+  {
+    path: "/Comment/:id",
+    element: <Comments />,
+
+  },
+
+  {
+    path: "/listComment",
+    element: <ListComments />,
+
+  },
+  {
+    path: '/comment',
+    element: <Comment />
+  }
 
 ]);
 

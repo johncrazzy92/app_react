@@ -12,6 +12,7 @@ function Display({ close, switchMenu }) {
   const user1 = {
     role:1,
   }
+  console.log(token)
   const signout = async () => {
     const headers = {
       headers: { Authorization: `Bearer ${token}` },
@@ -23,7 +24,7 @@ function Display({ close, switchMenu }) {
       localStorage.removeItem("user");
       dispatch(logoutUser());
     } catch (error) {
-      console.error("Error al cerrar la sesión:", error.response);
+      console.error("Error al cerrar la sesion:", error.response);
     }
   };
 
@@ -54,7 +55,23 @@ function Display({ close, switchMenu }) {
             to={"/author/me"}
           >
             Profile
-          </Link>            
+          </Link>  
+          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
+            <Link
+              className="py-3 rounded hover:bg-white hover:text-orange-600"
+              to={
+                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
+              }
+            >
+              New Manga
+            </Link>
+          )} 
+           <Link
+            className="py-3 rounded hover:bg-white hover:text-orange-600"
+            to={"/mangas/1"}
+          >
+            Mangas
+          </Link>         
             </>
           ) : (
             <>
@@ -79,24 +96,7 @@ function Display({ close, switchMenu }) {
           >
             Home
           </Link>
-          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
-            <Link
-              className="py-3 rounded hover:bg-white hover:text-orange-600"
-              to={
-                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
-              }
-            >
-              New Manga
-            </Link>
-          )}
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/mangas/1"}
-          >
-            Mangas
-          </Link>
-
-
+          
         </div>
       </div>
     </>

@@ -3,29 +3,29 @@ import saveAuthors from "../actions/me_authors.js";
 import logoutUser from "../actions/logout.js";
 
 let initialState = {
-    user: {},
-    token: "",
+  user: {},
+  token: "",
 }
 
 let authorsReducer = createReducer(initialState, (builder) =>
-    builder
-        .addCase(saveAuthors, (state, action) => {
-            let nuevoEstado = {
-                ...state,
-                user: action.payload.user,
-                token: action.payload.token,
+  builder
+    .addCase(saveAuthors, (state, action) => {
+      let nuevoEstado = {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
 
-            }
-            return nuevoEstado
+      }
+      return nuevoEstado
 
-        })
-        .addCase(logoutUser, (state) => {
-            let nuevoEstado = {
-                ...state,
-            user: null,
-            token: null,
-          }
-        return nuevoEstado
+    })
+    .addCase(logoutUser, (state) => {
+      let nuevoEstado = {
+        ...state,
+        user: null,
+        token: null,
+      }
+      return nuevoEstado
     })
 )
 
