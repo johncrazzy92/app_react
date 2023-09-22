@@ -1,5 +1,7 @@
 import commentAction from "../actions/commentAction";
 import createComment from "../actions/createCommentAction";
+import deleteAction from "../actions/deleteAction";
+import editComment from "../actions/editComment";
 
 const initialState = {
     comments: [],
@@ -36,6 +38,38 @@ const commentReducer = (state = initialState, action) => {
                 error: null
             };
         case createComment.rejected.type:
+            return {
+                ...state,
+                error: action.payload.error
+            };
+        case editComment.pending.type:
+            return {
+                ...state,
+                error: null
+            };
+        case editComment.fulfilled.type:
+            return {
+                ...state,
+                comments: state.comments.map((comment) => comment._id === action.payload.comments._id ? action.payload.comments : comment),
+                error: null
+            };
+        case editComment.rejected.type:
+            return {
+                ...state,
+                error: action.payload.error
+            };
+        case deleteAction.pending.type:
+            return {
+                ...state,
+                error: null
+            };
+        case deleteAction.fulfilled.type:
+            return {
+                ...state,
+                comments: state.comments.filter((comment) => comment._id != action.payload.comments._id),
+                error: null
+            };
+        case deleteAction.rejected.type:
             return {
                 ...state,
                 error: action.payload.error
