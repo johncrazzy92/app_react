@@ -38,7 +38,7 @@ function Display({ close, switchMenu }) {
       >
         <div className="flex justify-between text-white">
           <div className="flex gap-3">
-            <img className="h-7 rounded-full" src={user.photo} alt="user photo" />
+            <img className="h-7 rounded-full" src={user? user.photo : ""} alt="" />
             <p className="cursor-pointer">{user ? user.email : "Account"}</p>
           </div>
           
@@ -91,6 +91,16 @@ function Display({ close, switchMenu }) {
               }
             >
               New Manga
+            </Link>
+          )}
+          {user.role === 3 && (
+            <Link
+              className="py-3 rounded hover:bg-white hover:text-orange-600"
+              to={
+                user.role === 3 ? "/admin" : "/NotAllow"
+              }
+            >
+              Admin
             </Link>
           )}
           <Link

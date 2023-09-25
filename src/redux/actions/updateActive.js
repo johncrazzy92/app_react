@@ -12,7 +12,7 @@ const updateActive = createAsyncThunk("updateActive", async ( id) => {
         }
         );
         
-        console.log(author);
+        
   return author.data;
 });
 
