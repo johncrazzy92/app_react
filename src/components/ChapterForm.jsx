@@ -3,7 +3,6 @@ import Alert from '../components/Alert';
 import axios from 'axios';
 import NavBar from '../layouts/NavBar';
 
-
 const ChapterForm = () => {
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState([]);

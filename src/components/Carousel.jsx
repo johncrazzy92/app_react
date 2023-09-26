@@ -5,7 +5,6 @@ import ArrowBack from "./ArrowBack";
 
 const Carousel = () => {
   const [categories, setCategories] = useState([]);
-  
   async function getCategoriesData(){
     try {
       let {data} = await axios("http://localhost:8080/categories")

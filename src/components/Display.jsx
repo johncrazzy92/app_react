@@ -79,7 +79,6 @@ function Display({ close, switchMenu }) {
               )} 
               
             </>) : (
-
             <>
               <Link
                 to={"/register"}
@@ -99,7 +98,6 @@ function Display({ close, switchMenu }) {
               </Link>
             </>
           )}
-
         </div>
       </div>
     </>

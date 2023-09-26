@@ -12,12 +12,10 @@ const Author = () => {
     
     if (!profile._id){
     axios
-
       .get("http://localhost:8080/authors/me/" + authorId)
 
       .then((res) => {
         setProfile(res.data.author);
-        
       })
       .catch((err) => {
         console.log(err);
