@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import logoutUser from "../redux/actions/logout";
 import { useEffect, useState } from "react";
 
-
 function Display({ close, switchMenu }) {
   const { user, token } = useSelector((store) => store.me_authorsReducer);
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ function Display({ close, switchMenu }) {
       localStorage.removeItem("user");
       dispatch(logoutUser());
     } catch (error) {
-      console.error("Error al cerrar la sesión:", error.response);
+      console.error("Error al cerrar la sesion:", error.response);
     }
   };
 

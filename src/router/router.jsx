@@ -16,10 +16,15 @@ import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
+import authorsReducer from "../redux/reducers/me_authorsReducer";
+import ListComments from "../components/ListComment";
+import Comments from "../components/Comment";
+import Comment from "../components/Comment";
 import EditChapter from "../components/EditChapter";
 import Donation from "../components/Donation";
-const isLogged = true;
 import { AdminPanel } from "../pages/AdminPanel";
+
+const isLogged = authorsReducer.isLogged;
 
 const router = createBrowserRouter([
   {
@@ -73,7 +78,7 @@ const router = createBrowserRouter([
   },
   { 
     path: "/login",
-    element: <Login/>,
+    element: <Login />,
   },
   {
     path: "/manga-form",
@@ -85,7 +90,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-   {
+  {
     path: "/register",
     element: <Register />,
   },
@@ -94,17 +99,29 @@ const router = createBrowserRouter([
     element: <Alert />,
   },
   {
-    path: "/manga_id/chapther-form",
+    path: "/:id/chapter-form",
     element: isLogged ? <ChapterForm /> : <NotAllow />,
   },
   {
+    path: "/Comment/:id",
+    element: <Comments />,
+  },
+  {
+    path: "/listComment",
+    element: <ListComments />,
+  },
+  {
+    path: '/comment',
+    element: <Comment />
+  },
     path: "/edit/:manga_id",
     element:  <EditChapter/>,
   },
   {
     path: "/payment/create-order",
     element: <Donation/>
-  },{
+  },
+  {
     path: "/admin",
     element: <LayoutProfileMe/> ,
     children:[{

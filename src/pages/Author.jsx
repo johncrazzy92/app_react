@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-
 const Author = () => {
   const [profile, setProfile] = useState({});
   const authorId = useSelector((store)=>store.me_authorsReducer.user.author)

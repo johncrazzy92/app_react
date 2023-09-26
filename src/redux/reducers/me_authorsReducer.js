@@ -9,17 +9,15 @@ let initialState = {
 }
 
 let authorsReducer = createReducer(initialState, (builder) =>
-    builder
-        .addCase(saveAuthors, (state, action) => {
-            let nuevoEstado = {
-                ...state,
-                user: action.payload.user,
-                token: action.payload.token,
+  builder
+    .addCase(saveAuthors, (state, action) => {
+      let nuevoEstado = {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
 
-            }
-            return nuevoEstado
-
-        })
+      }
+      return nuevoEstado })
         .addCase(logoutUser, (state) => {
             let nuevoEstado = {
                 ...state,
@@ -27,8 +25,7 @@ let authorsReducer = createReducer(initialState, (builder) =>
             token: null,
           }
 
-        return nuevoEstado
-    })
+        return nuevoEstado })
     .addCase(signinToken.fulfilled,(state,action)=>{
         console.log(action);
         const newState = {
@@ -36,8 +33,7 @@ let authorsReducer = createReducer(initialState, (builder) =>
             user: action.payload.user,
             token: action.payload.token,
         }
-        return newState
-    })
+        return newState  })
     .addCase(signinToken.pending,(state)=>{
         
         const newState = {

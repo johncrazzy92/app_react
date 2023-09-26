@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Alert from "../components/componentesMangas/Alert";
 import { useDispatch, useSelector } from "react-redux";
-import { postOneManga } from "../../redux/actions/mangaAction";
+import { postOneManga } from "../../src/redux/actions/mangaAction.js";
 
 //----------------------------
 const MangaForm = () => {
@@ -123,9 +123,8 @@ const MangaForm = () => {
           </form>
         </div>
         <img
-          className={`h-4/6 hidden rounded-md ${
-            image && "lg:flex"
-          } self-center`}
+          className={`h-4/6 hidden rounded-md ${image && "lg:flex"
+            } self-center`}
           src={image}
           alt="image"
         />
