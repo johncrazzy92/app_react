@@ -4,7 +4,7 @@ import logoutUser from "../actions/logout.js";
 import signinToken from "../actions/session.js";
 
 let initialState = {
-    user: {},
+    user: null,
     token: "",
 }
 

@@ -46,21 +46,24 @@ function Display({ close, switchMenu }) {
           />
         </div>
         <div className=" text-white flex flex-col text-center gap-3 p-5">
-          {user ? (
+          {user !== null ? (
             <>
-              <img src={user.photo} alt="" />
-              <p>{user.email}</p>
-              <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
+            <Link
+                className="py-3 rounded hover:bg-white hover:text-orange-600"
+                to={"/"}>
+                Home
+              </Link>
               <Link
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
                 to={"/author/me"}>
                 Profile
               </Link>  
+              <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
               {(user.role === 1 || user.role === 2 || user.role === 3) && (
                 <Link
                   className="py-3 rounded hover:bg-white hover:text-orange-600"
                   to={
-                    user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+                    user.role === 1 || user.role === 2 || user.role === 3 ? "/manga-form" : "/NotAllow"
                   }>
                   New Manga
                 </Link>
@@ -69,20 +72,12 @@ function Display({ close, switchMenu }) {
                 <Link
                   className="py-3 rounded hover:bg-white hover:text-orange-600"
                   to={
-                    user.role === 1 || user.role === 2 ? "/manga_id/chapther-form" : "/NotAllow"
+                    user.role === 1 || user.role === 2 || user.role === 3 ? "/manga_id/chapther-form" : "/NotAllow"
                   }>
                   New Chapter
                 </Link>
               )} 
-              {(user.role === 1 || user.role === 2 || user.role === 3) && (
-                <Link
-                    className="py-3 rounded hover:bg-white hover:text-orange-600"
-                    to={
-                      user.role === 1 || user.role === 2 ? "/edit/:manga_id" : "/NotAllow"
-                    }>
-                    Edit Chapter
-                  </Link>
-              )} 
+              
             </>) : (
 
             <>
