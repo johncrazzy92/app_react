@@ -45,7 +45,8 @@ const Footer = () => {
               />
             </svg>
           </div>
-          <a
+          <Link
+            to={"/payment/create-order"}
             className="flex items-center justify-center bg-gradient-to-t from-orange-500 to-orange-600 text-white gap-4 p-2 rounded"
             href=""
           >
@@ -62,7 +63,7 @@ const Footer = () => {
                 stroke="white"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

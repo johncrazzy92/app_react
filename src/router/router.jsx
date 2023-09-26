@@ -18,6 +18,8 @@ import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
+import EditChapter from "../components/EditChapter";
+import Donation from "../components/Donation";
 
 const isLogged = true;
 
@@ -97,6 +99,14 @@ const router = createBrowserRouter([
     path: "/manga_id/chapther-form",
     element: isLogged ? <ChapterForm /> : <NotAllow />,
   },
+  {
+    path: "/edit/:manga_id",
+    element:  <EditChapter/>,
+  },
+  {
+    path: "/payment/create-order",
+    element: <Donation/>
+  }
 
 ]);
 

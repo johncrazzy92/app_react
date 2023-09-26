@@ -8,11 +8,8 @@ import logoutUser from "../redux/actions/logout";
 
 function Display({ close, switchMenu }) {
   const { user, token } = useSelector((store) => store.me_authorsReducer);
-  console.log(user)
   const dispatch = useDispatch();
-  const user1 = {
-    role:1,
-  }
+  
   const signout = async () => {
     const headers = {
       headers: { Authorization: `Bearer ${token}` },
@@ -33,8 +30,7 @@ function Display({ close, switchMenu }) {
     <>
       <div
         className={`lg:w-3/12 w-full bg-gradient-to-t from-orange-500 to-orange-600 h-screen  flex-col absolute top-0 left-0 ${close ? "block" : "hidden"
-          } z-30 gap-5 px-4 py-5`}
-      >
+          } z-30 gap-5 px-4 py-5`}>
         <div className="flex justify-between text-white">
           <p className="cursor-pointer">Account</p>
           <img
@@ -51,24 +47,38 @@ function Display({ close, switchMenu }) {
               <p>{user.email}</p>
               <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
               <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/author/me"}
-          >
-            Profile
-          </Link>  
-          {(user1.role === 1 || user1.role === 2 || user1.role === 3) && (
-            <Link
-              className="py-3 rounded hover:bg-white hover:text-orange-600"
-              to={
-                user1.role === 1 || user1.role === 2 ? "/manga-form" : "/NotAllow"
-              }
-            >
-              New Manga
-            </Link>
-          )} 
-                   
-            </>
-          ) : (
+                className="py-3 rounded hover:bg-white hover:text-orange-600"
+                to={"/author/me"}>
+                Profile
+              </Link>  
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                  className="py-3 rounded hover:bg-white hover:text-orange-600"
+                  to={
+                    user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+                  }>
+                  New Manga
+                </Link>
+              )} 
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                  className="py-3 rounded hover:bg-white hover:text-orange-600"
+                  to={
+                    user.role === 1 || user.role === 2 ? "/manga_id/chapther-form" : "/NotAllow"
+                  }>
+                  New Chapter
+                </Link>
+              )} 
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                    className="py-3 rounded hover:bg-white hover:text-orange-600"
+                    to={
+                      user.role === 1 || user.role === 2 ? "/edit/:manga_id" : "/NotAllow"
+                    }>
+                    Edit Chapter
+                  </Link>
+              )} 
+            </>) : (
             <>
               <Link
                 to={"/register"}
@@ -78,20 +88,16 @@ function Display({ close, switchMenu }) {
               <Link
                 to={"/login"}
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
-                href=""
-              >
+                href="">
                 Sign in
+              </Link>
+              <Link
+                className="py-3 rounded hover:bg-white hover:text-orange-600"
+                to={"/"}>
+                Home
               </Link>
             </>
           )}
-          
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/"}
-          >
-            Home
-          </Link>
-          
         </div>
       </div>
     </>
