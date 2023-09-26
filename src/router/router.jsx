@@ -8,8 +8,7 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
-
-import { element } from "prop-types";
+import MyMangas from "../pages/MyMangas";
 import Login from "../pages/Login";
 
 
@@ -70,11 +69,14 @@ const router = createBrowserRouter([
     element: <Page />,
   },
 
-  { 
+  {
     path: "/login",
-    element: <Login/>,
+    element: <Login />,
   },
-  
+  {
+    path: "/mymangas",
+    element: <MyMangas />,
+  },
   {
     path: "/manga-form",
     element: <LayoutProfileMe />,
@@ -85,7 +87,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-   {
+  {
     path: "/register",
     element: <Register />,
   },

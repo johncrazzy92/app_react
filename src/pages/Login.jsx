@@ -10,24 +10,24 @@ import Alert from '../components/componentesMangas/Alert.jsx';
 const Login = () => {
     const email = useRef()
     const password = useRef()
-    const [alert, setAlert]= useState([])
-    const [show, setShow]= useState(false)
+    const [alert, setAlert] = useState([])
+    const [show, setShow] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
+
     async function enviarData() {
         const data = {
             email: email.current.value,
             password: password.current.value,
         }
         try {
-            
+
             const credenciales = await axios.post("http://localhost:8080/auth/signin", data)
             let token = credenciales.data.response
             dispatch(saveAuthors(token)),
-            localStorage.setItem('token',credenciales.data.response.token)
-            localStorage.setItem('user',credenciales.data.response.user.email)
-
+                localStorage.setItem('token', credenciales.data.response.token)
+            localStorage.setItem('user', credenciales.data.response.user)
+            console.log(credenciales)
             navigate("/")
 
         } catch (error) {
@@ -40,7 +40,7 @@ const Login = () => {
 
     return (
         <>
-            {show && <Alert setShow={setShow} show={show} alert={alert}/>}
+            {show && <Alert setShow={setShow} show={show} alert={alert} />}
             <NavBar />
             <div className='w-full h-screen flex'>
                 <div className=' w-1/2 h-screen bg-cover' style={{ backgroundImage: "url('./img/img-login.png')" }}>

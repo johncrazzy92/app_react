@@ -95,7 +95,7 @@ const Mangas = () => {
 
   return (
     <>
-     <NavBar />
+      <NavBar />
       <div className='w-full h-96 items-center justify-center bg-top flex flex-col' style={{ backgroundImage: "url('../../public/img/bg-mangas.png')" }}>
         <h1 className='text-white text-6xl'>Mangas</h1>
         <input onInput={(e) => applyFilters('text', e.target.value)} className='rounded h-12 p-4 w-11/12 mt-8 lg:mt-24 ' type="text" placeholder=' Find your manga here' />
@@ -104,7 +104,7 @@ const Mangas = () => {
         {categories?.map((category) => (
           <button
             onClick={() => applyFilters('check', category._id)}
-            key={category._id} // Agrega un key único aquí
+            key={category._id}
             className='rounded p-1 m-1 mb-2 '
             style={{ backgroundColor: category.color }}
           >{category.name}</button>

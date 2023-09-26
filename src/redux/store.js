@@ -4,6 +4,7 @@ import mangasReducer from './reducers/mangasReducer.js'
 import chapterReducer from './reducers/chapters.js'
 import me_authorsReducer from "./reducers/me_authorsReducer.js"
 import mangas_news from "./reducers/mangas_news.js"
+import myMangasReducer from './reducers/mangas.js'
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         mangas: mangasReducer,
         me_authorsReducer,
         mangas_news,
+        myMangasReducer,
     }
 })
 
