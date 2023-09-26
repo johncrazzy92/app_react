@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 //import axios from "axios";
 import NavBar from "../layouts/NavBar";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import NewManga from "../components/NewManga";
 import EditModal from "../components/EditModal";
@@ -67,7 +68,7 @@ const MyMangas = () => {
                 <div className="flex flex-col">
                   <div className="flex absolute top-0 left-4 gap-4">
                     <div className="cursor-pointer">➕</div>
-                    <div className="cursor-pointer">✏️</div>
+                    <Link to={"/edit/" + manga._id} className="cursor-pointer">✏️</Link>
                   </div>
                   <div className="text-sm lg:text-xl font-bold absolute top-8 left-6">
                     {manga.title}

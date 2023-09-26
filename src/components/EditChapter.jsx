@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import NavBar from '../layouts/NavBar';
@@ -21,10 +21,12 @@ const EditChapter = () => {
   const chapterEditInfo = useRef();
   const dispatch = useDispatch();
 
+  const idParams = window.location.pathname.split('/')[2];
+
   const getManga = async () => {
     try {
       let mangaById = await axios.get(
-        'http://localhost:8080/chapters/me?manga_id=65117d91d875b6549eeb2b41',
+        'http://localhost:8080/chapters/me?manga_id=' + idParams,
         {
           headers: {
             Authorization: 'Bearer ' + token,
