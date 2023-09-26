@@ -8,6 +8,8 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
+import MyMangas from "../pages/MyMangas";
+import { element } from "prop-types";
 import Login from "../pages/Login";
 import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
@@ -18,6 +20,9 @@ import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
 import Comments from "../components/Comment";
 import Comment from "../components/Comment";
+import EditChapter from "../components/EditChapter";
+import Donation from "../components/Donation";
+import { AdminPanel } from "../pages/AdminPanel";
 
 const isLogged = authorsReducer.isLogged;
 
@@ -67,12 +72,14 @@ const router = createBrowserRouter([
     path: "/chapter/:id/:page",
     element: <Page />,
   },
-
   {
+    path: "/mymangas",
+    element: <MyMangas />,
+  },
+  { 
     path: "/login",
     element: <Login />,
   },
-
   {
     path: "/manga-form",
     element: <LayoutProfileMe />,
@@ -98,19 +105,30 @@ const router = createBrowserRouter([
   {
     path: "/Comment/:id",
     element: <Comments />,
-
   },
-
   {
     path: "/listComment",
     element: <ListComments />,
-
   },
   {
     path: '/comment',
     element: <Comment />
+  },
+    path: "/edit/:manga_id",
+    element:  <EditChapter/>,
+  },
+  {
+    path: "/payment/create-order",
+    element: <Donation/>
+  },
+  {
+    path: "/admin",
+    element: <LayoutProfileMe/> ,
+    children:[{
+      path: "/admin",
+      element:<AdminPanel/>
+    }]
   }
-
 ]);
 
 export default router;

@@ -5,16 +5,21 @@ import me_authorsReducer from "./reducers/me_authorsReducer.js"
 import mangas_news from "./reducers/mangas_news.js"
 import mangaPostReducer from "./reducers/mangaReducer.js"
 import commentReducer from "./reducers/commentReducer.js"
-
+import myMangasReducer from './reducers/mangas.js'
+import chapterReducerEdit from './reducers/chapterReducer.js'
+import authors from "./reducers/authors.js"
 
 export const store = configureStore({
     reducer: {
-        chapterReducer,
+        chapter: chapterReducer,
         mangas: mangasReducer,
         me_authorsReducer,
         mangas_news,
         mangaPostReducer,
         commentReducer,
+        chapterReducerEdit,
+        myMangasReducer,
+        authors,
     }
 })
 
