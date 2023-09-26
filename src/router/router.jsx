@@ -9,18 +9,17 @@ import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
 import MyMangas from "../pages/MyMangas";
+import { element } from "prop-types";
 import Login from "../pages/Login";
-
-
 import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
-
+import EditChapter from "../components/EditChapter";
+import Donation from "../components/Donation";
 const isLogged = true;
-
-
+import { AdminPanel } from "../pages/AdminPanel";
 
 const router = createBrowserRouter([
   {
@@ -68,14 +67,13 @@ const router = createBrowserRouter([
     path: "/chapter/:id/:page",
     element: <Page />,
   },
-
-  {
-    path: "/login",
-    element: <Login />,
-  },
   {
     path: "/mymangas",
     element: <MyMangas />,
+  },
+  { 
+    path: "/login",
+    element: <Login/>,
   },
   {
     path: "/manga-form",
@@ -87,7 +85,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
+   {
     path: "/register",
     element: <Register />,
   },
@@ -99,7 +97,21 @@ const router = createBrowserRouter([
     path: "/manga_id/chapther-form",
     element: isLogged ? <ChapterForm /> : <NotAllow />,
   },
-
+  {
+    path: "/edit/:manga_id",
+    element:  <EditChapter/>,
+  },
+  {
+    path: "/payment/create-order",
+    element: <Donation/>
+  },{
+    path: "/admin",
+    element: <LayoutProfileMe/> ,
+    children:[{
+      path: "/admin",
+      element:<AdminPanel/>
+    }]
+  }
 ]);
 
 export default router;
