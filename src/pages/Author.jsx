@@ -8,9 +8,9 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 const Author = () => {
   const [profile, setProfile] = useState({});
   const authorId = useSelector((store)=>store.me_authorsReducer.user.author)
-  console.log(authorId)
-  console.log(profile)
   useEffect(() => {
+    
+    if (!profile._id){
     axios
 
       .get("http://localhost:8080/authors/me/" + authorId)
@@ -22,8 +22,8 @@ const Author = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
+  }}, []);
+ 
   return (
     <>
       <AuthorProfile oneAuthor={profile} />

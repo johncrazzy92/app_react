@@ -1,4 +1,5 @@
 import './App.css'
+import Home from './pages/Home'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import signinToken from './redux/actions/session.js'
@@ -7,7 +8,6 @@ import { RouterProvider } from "react-router-dom";
 
 export default function App() {
   const dispatch = useDispatch()
-  
   
   useEffect(()=>{
     const token = window.localStorage.getItem("token")

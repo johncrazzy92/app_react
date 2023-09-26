@@ -7,13 +7,10 @@ import { useDispatch } from "react-redux";
 import logoutUser from "../redux/actions/logout";
 import { useEffect, useState } from "react";
 
+
 function Display({ close, switchMenu }) {
   const { user, token } = useSelector((store) => store.me_authorsReducer);
   const dispatch = useDispatch();
-
-
-
-
   const signout = async () => {
     const headers = {
       headers: { Authorization: `Bearer ${token}` },
@@ -41,7 +38,6 @@ function Display({ close, switchMenu }) {
             <img className="h-7 rounded-full" src={user? user.photo : ""} alt="" />
             <p className="cursor-pointer">{user ? user.email : "Account"}</p>
           </div>
-          
           <img
             className="cursor-pointer"
             onClick={switchMenu}
@@ -50,17 +46,45 @@ function Display({ close, switchMenu }) {
           />
         </div>
         <div className=" text-white flex flex-col text-center gap-3 p-5">
-          {token ? (
+          {user ? (
             <>
+              <img src={user.photo} alt="" />
+              <p>{user.email}</p>
               <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
               <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/author/me"}
-          >
-            Profile
-          </Link>            
-            </>
-          ) : (
+                className="py-3 rounded hover:bg-white hover:text-orange-600"
+                to={"/author/me"}>
+                Profile
+              </Link>  
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                  className="py-3 rounded hover:bg-white hover:text-orange-600"
+                  to={
+                    user.role === 1 || user.role === 2 ? "/manga-form" : "/NotAllow"
+                  }>
+                  New Manga
+                </Link>
+              )} 
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                  className="py-3 rounded hover:bg-white hover:text-orange-600"
+                  to={
+                    user.role === 1 || user.role === 2 ? "/manga_id/chapther-form" : "/NotAllow"
+                  }>
+                  New Chapter
+                </Link>
+              )} 
+              {(user.role === 1 || user.role === 2 || user.role === 3) && (
+                <Link
+                    className="py-3 rounded hover:bg-white hover:text-orange-600"
+                    to={
+                      user.role === 1 || user.role === 2 ? "/edit/:manga_id" : "/NotAllow"
+                    }>
+                    Edit Chapter
+                  </Link>
+              )} 
+            </>) : (
+
             <>
               <Link
                 to={"/register"}
@@ -70,46 +94,16 @@ function Display({ close, switchMenu }) {
               <Link
                 to={"/login"}
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
-                href=""
-              >
+                href="">
                 Sign in
+              </Link>
+              <Link
+                className="py-3 rounded hover:bg-white hover:text-orange-600"
+                to={"/"}>
+                Home
               </Link>
             </>
           )}
-          
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/"}
-          >
-            Home
-          </Link>
-          {(user.role === 1 || user.role === 2 || user.role === 3) && (
-            <Link
-              className="py-3 rounded hover:bg-white hover:text-orange-600"
-              to={
-                user.role === 1 || user.role === 2 || user.role === 3 ? "/manga-form" : "/NotAllow"
-              }
-            >
-              New Manga
-            </Link>
-          )}
-          {user.role === 3 && (
-            <Link
-              className="py-3 rounded hover:bg-white hover:text-orange-600"
-              to={
-                user.role === 3 ? "/admin" : "/NotAllow"
-              }
-            >
-              Admin
-            </Link>
-          )}
-          <Link
-            className="py-3 rounded hover:bg-white hover:text-orange-600"
-            to={"/mangas/1"}
-          >
-            Mangas
-          </Link>
-
 
         </div>
       </div>

@@ -3,7 +3,6 @@ import saveAuthors from "../actions/me_authors.js";
 import logoutUser from "../actions/logout.js";
 import signinToken from "../actions/session.js";
 
-
 let initialState = {
     user: {},
     token: "",
@@ -27,6 +26,7 @@ let authorsReducer = createReducer(initialState, (builder) =>
             user: null,
             token: null,
           }
+
         return nuevoEstado
     })
     .addCase(signinToken.fulfilled,(state,action)=>{
@@ -45,7 +45,6 @@ let authorsReducer = createReducer(initialState, (builder) =>
         };
         return newState;
     })
-    
 )
 
 export default authorsReducer
