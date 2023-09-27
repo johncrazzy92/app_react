@@ -29,7 +29,7 @@ const Chapters = () => {
   return (
     <>
       <NavBar />
-      <div className="bg-gray-200 pt-28 w-full h-screen">
+      <div className="bg-gray-200 pt-28 w-full ">
         <div className="flex flex-col w-full mb-2 ps-4 pe-4">
           <p className="text-center mb-4">Chapters</p>
           <div className="flex">
@@ -69,7 +69,7 @@ const Chapters = () => {
                 </div>
               </div>
               <Link
-                to={`/chapter/${chapter._id}/1`}
+                to={`/chapterPage/${chapter._id}/1`}
                 className="bg-orange-500 w-24 h-12 rounded-full text-white font-bold me-4 justify-center items-center flex"
               >
                 Read

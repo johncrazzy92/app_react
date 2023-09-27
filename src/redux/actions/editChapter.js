@@ -1,6 +1,6 @@
+/* eslint-disable no-useless-catch */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
 
 const editChapterAction = createAsyncThunk(
   "editChapter",
@@ -15,8 +15,6 @@ const editChapterAction = createAsyncThunk(
           },
         }
       );
-
-      
       return response.data;
     } catch (error) {
       

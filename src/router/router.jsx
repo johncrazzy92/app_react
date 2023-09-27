@@ -6,10 +6,8 @@ import LayoutProfileMe from "../layouts/LayoutProfileMe";
 import MangaDetails from "../components/MangaDetails";
 import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
-import Page from "../pages/page";
-import Chapter from "../components/Chapter";
+import Page from "../pages/Page";
 import MyMangas from "../pages/MyMangas";
-import { element } from "prop-types";
 import Login from "../pages/Login";
 import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
@@ -18,8 +16,6 @@ import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
 import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
-import Comments from "../components/Comment";
-import Comment from "../components/Comment";
 import EditChapter from "../components/EditChapter";
 import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
@@ -47,7 +43,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "/manga/:id",
     element: <MangaDetails />,
@@ -65,11 +60,7 @@ const router = createBrowserRouter([
     element: <Mangas />,
   },
   {
-    path: "/chapter",
-    element: <Chapter />,
-  },
-  {
-    path: "/chapter/:id/:page",
+    path: "/chapterPage/:id/:page",
     element: <Page />,
   },
   {
@@ -100,24 +91,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id/chapter-form",
-    element: isLogged ? <ChapterForm /> : <NotAllow />,
-  },
-  {
-    path: "/Comment/:id",
-    element: <Comments />,
+    element:  <ChapterForm /> 
   },
   {
     path: "/listComment",
     element: <ListComments />,
   },
+ 
   {
-    path: '/comment',
-    element: <Comment />
-  },
     path: "/edit/:manga_id",
-    element:  <EditChapter/>,
+    element: <EditChapter/>,
   },
-  {
+  { 
     path: "/payment/create-order",
     element: <Donation/>
   },
