@@ -3,7 +3,7 @@ import socket from './Socket';
 import ChatIcon from './Icono';
 
 import { useSelector, useDispatch } from 'react-redux';
-import messageBot from '../../redux/actions/messagesBot';
+import messagesBot from '../../redux/actions/messagesBot';
 
 export default function Chatbot() {
 
@@ -50,7 +50,7 @@ export default function Chatbot() {
     function sendMsg(e) {
         e.preventDefault();
         if (msg.trim() !== '') {
-            dispatch(messageBot(msg));
+            dispatch(messagesBot(msg));
             socket.emit('chat', msg);
             setMsg('');
         }
