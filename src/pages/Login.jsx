@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import axios from "axios";
 import saveAuthors from '../redux/actions/me_authors';
 import Alert from '../components/componentesMangas/Alert.jsx';
+import { GoogleLogin } from '@react-oauth/google';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -37,6 +39,53 @@ const Login = () => {
     }
 
   }
+
+  const handleLogin = async (googleData) => {
+    
+    const data = {
+      token: googleData.credential,
+    };
+  
+    try {
+      const res = await axios.post('http://localhost:8080/auth/google-signin', data);
+      let token = res.data.response;
+      dispatch(saveAuthors(token));
+      localStorage.setItem('token', res.data.response.token);
+      localStorage.setItem('user', res.data.response.user.email);
+      navigate("/");
+  
+      if (res.data.response.user.created) {
+        // Mostrar una alerta de registro exitoso si el usuario se acaba de crear
+        Swal.fire({
+          icon: 'success',
+          title: 'Registrado con éxito',
+          text: '¡Tu cuenta ha sido creada y has iniciado sesión con éxito!',
+        });
+      } else {
+        // Mostrar una alerta de inicio de sesión exitoso si el usuario ya existía
+        Swal.fire({
+          icon: 'success',
+          title: 'Inicio de sesión correcto',
+          text: '¡Has iniciado sesión con éxito!',
+        });
+      }
+    } catch (error) {
+      setShow(!show);
+      setAlert([error.response.data.message]);
+      console.log(error);
+  
+      // Mostrar una alerta de error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al iniciar sesión con Google',
+        text: 'Ha ocurrido un error al iniciar sesión con Google.',
+      });
+    }
+  };
+
+  const handleFailure = (result) => {
+    alert(result);
+  };
 
   return (
     <>
@@ -74,7 +123,12 @@ const Login = () => {
           </div>
           <div className='flex justify-center'>
             <div className='flex justify-center items-center w-1/2 h-10 mt-2 bg-white border shadow-sm placeholder-slate-400 rounded-md'>
-              <button className=' flex '><img className='w-6 h-6' src="./img/Google.png" alt="" /> Sign in with Google</button>
+              <GoogleLogin
+                buttonText="Log in with Google"
+                onSuccess={handleLogin}
+                onFailure={handleFailure}
+                cookiePolicy={'single_host_origin'}
+              ></GoogleLogin>
             </div>
           </div>
           <div className='flex justify-center gap-1 pt-2'>

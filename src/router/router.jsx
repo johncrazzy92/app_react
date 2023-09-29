@@ -19,6 +19,7 @@ import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
 import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
+import Verify from "../components/Verify";
 
 const isLogged = authorsReducer.isLogged;
 
@@ -113,6 +114,9 @@ const router = createBrowserRouter([
       path: "/admin",
       element:<AdminPanel/>
     }]
+  }, {
+    path: "/auth/verify",
+    element: <Verify />,
   }
 ]);
 
