@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { messageBot } from "../actions/messagesBot";
+import { messageBot } from "../actions/messagesBot.js";
 
 const initialState = {
     messages: [{ value: 'Hi, there! I\'m Mingabot :) How can I help you?', id: 'bot' }]
