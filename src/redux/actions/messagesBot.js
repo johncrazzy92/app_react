@@ -5,4 +5,4 @@ const messageBot = createAction("messageBot", (messages) => {
         payload: messages
     }
 });
-export default messageBot 
+export default messageBot

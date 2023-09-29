@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import socket from './Socket';
 import ChatIcon from './Icono';
-/* import { useSelector, useDispatch } from 'react-redux';
-import messageBot from '../../redux/actions/messagesBot'; */
+
+import { useSelector, useDispatch } from 'react-redux';
+import messageBot from '../../redux/actions/messagesBot';
 
 export default function Chatbot() {
-    const [messages, setMessages] = useState([{ value: 'Hi, there! I\'m Mingabot :) How can I help you?', id: 'bot' }]);
+
+    const dispatch = useDispatch();
+    let messages = useSelector(state => state.session)
+
+
+    // const [conect, setConect] = useState(false);
+    // const [messages, setMessages] = useState([{ value: 'Hi, there! I\'m Mingabot :) How can I help you?', id: 'bot' }]);
     const [msg, setMsg] = useState('');
-    const [chatOpen, setChatOpen] = useState(false);  // Estado para controlar la apertura/cierre del chat
+    const [chatOpen, setChatOpen] = useState(false);
 
     function toggleChat() {
         setChatOpen(!chatOpen);
@@ -25,6 +32,14 @@ export default function Chatbot() {
             });
         };
 
+        socket.on('connect', () => {
+            console.log('Conectado al servidor');
+
+        });
+        socket.on('disconnect', () => {
+            console.log('Desconectado del servidor');
+        });
+
         socket.on('response', responseHandler);
 
         return () => {
@@ -34,8 +49,8 @@ export default function Chatbot() {
 
     function sendMsg(e) {
         e.preventDefault();
-        if (msg !== '' && msg !== ' ') {
-            setMessages(prevMessages => [...prevMessages, { value: msg, id: 'user' }]);
+        if (msg.trim() !== '') {
+            dispatch(messageBot(msg));
             socket.emit('chat', msg);
             setMsg('');
         }
@@ -43,7 +58,7 @@ export default function Chatbot() {
 
     function Message({ message }) {
         return (
-            <li className={message.id === 'bot' ? 'bg-emerald-300 text-sm m-1 text-end rounded-md p-2' : 'bg-orange-300 text-sm m-1 rounded-md p-2'}>
+            <li className={message.id === 'bot' ? 'bg-blue-300 text-sm m-1 text-end rounded-md p-2' : 'bg-orange-300 text-sm m-1 rounded-md p-2'}>
                 {message.value}
             </li>
         );
@@ -59,8 +74,8 @@ export default function Chatbot() {
                     <button className="close-button" onClick={closeChat}>
                         <img className='h-7 w-7' src="public/img/x.png" alt="" />
                     </button>
-                    <form onSubmit={sendMsg} className='bg-orange-500 w-full min-h-[320px] max-h-[580px] border-4 flex flex-col items-center rounded-lg'>
-                        <div className='w-full min-h-[320px] max-h-[580px] overflow-y-auto mb-1 bg-white'>
+                    <form onSubmit={sendMsg} className='bg-orange-500 w-full min-h-[320px] max-h-[500px] border-4 flex flex-col items-center rounded-lg'>
+                        <div className='w-full min-h-[320px] max-h-[500px] overflow-y-auto mb-1 bg-white'>
                             <ul>
                                 {messages.map((message, index) => (
                                     <>

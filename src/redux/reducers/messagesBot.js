@@ -1,22 +1,18 @@
 import { createReducer } from "@reduxjs/toolkit";
-
 import { messageBot } from "../actions/messagesBot";
 
 const initialState = {
-    messages: [],
-    message: "",
-}
-const messagesBotReducer = createReducer(initialState, (builder) => builder
-    .addCase(messageBot, (state, action) => {
-        const newState = {
-            ...state,
-        }
-        if (action.payload.messages) {
-            newState.messages = action.payload.messages;
-        }
-        if (action.payload.message) {
-            newState.message = action.payload.message;
-        }
-        return newState;
-    }))
+    messages: [{ value: 'Hi, there! I\'m Mingabot :) How can I help you?', id: 'bot' }]
+};
+
+const messagesBotReducer = createReducer(initialState, (builder) => {
+    builder
+        .addCase(messageBot, (state, action) => {
+            return {
+                ...state,
+                messages: [...state.messages, { value: action.payload, id: 'user' }]
+            };
+        });
+});
+
 export default messagesBotReducer;

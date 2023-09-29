@@ -14,7 +14,7 @@ function NavBar() {
   return (
     <>
 
-      <nav className="w-full flex p-4 z-40 justify-between absolute lg:p-10 lg:flex">
+      <nav className="w-full flex p-4 z-30 justify-between absolute lg:p-10 lg:flex">
         <img
           src={location.pathname.startsWith("/chapterPage") ? menuhamburguesa2 : menuhamburguesa}
           alt="hamburguesa"
