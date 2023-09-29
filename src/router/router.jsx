@@ -19,6 +19,8 @@ import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
 import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
+import Socket from "../components/componentesMangas/Socket";
+import Chatbot from "../components/componentesMangas/ChatBot";
 
 const isLogged = authorsReducer.isLogged;
 
@@ -67,7 +69,7 @@ const router = createBrowserRouter([
     path: "/mymangas",
     element: <MyMangas />,
   },
-  { 
+  {
     path: "/login",
     element: <Login />,
   },
@@ -91,28 +93,36 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id/chapter-form",
-    element:  <ChapterForm /> 
+    element: <ChapterForm />
   },
   {
     path: "/listComment",
     element: <ListComments />,
   },
- 
+
   {
     path: "/edit/:manga_id",
-    element: <EditChapter/>,
+    element: <EditChapter />,
   },
-  { 
+  {
     path: "/payment/create-order",
-    element: <Donation/>
+    element: <Donation />
   },
   {
     path: "/admin",
-    element: <LayoutProfileMe/> ,
-    children:[{
+    element: <LayoutProfileMe />,
+    children: [{
       path: "/admin",
-      element:<AdminPanel/>
+      element: <AdminPanel />
     }]
+  },
+  {
+    path: "/socket",
+    element: <Socket />
+  },
+  {
+    path: "/chat-bt",
+    element: <Chatbot />
   }
 ]);
 

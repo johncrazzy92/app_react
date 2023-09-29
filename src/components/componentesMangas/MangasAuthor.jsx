@@ -5,6 +5,7 @@ import MangasAll from "./MangasAll";
 import LogoMinga from "../../../public/img/Logo Dos.png";
 import { useDispatch } from 'react-redux';
 import setMangasNews from "../../redux/actions/mangas_news";
+import { Link } from "react-router-dom";
 
 const MangasAuthor = ({ profileId }) => {
   const dispatch = useDispatch()
@@ -32,9 +33,8 @@ const MangasAuthor = ({ profileId }) => {
         ) : null}
 
         <div
-          className={` gap-5 h-full py-10 lg:py-0 flex-wrap ${
-            mangas_New.quantity ? "flex" : "hidden"
-          }
+          className={` gap-5 h-full py-10 lg:py-0 flex-wrap ${mangas_New.quantity ? "flex" : "hidden"
+            }
           items-center justify-center lg:justify-around lg:items-center `}
         >
           <hr className="my-3 h-0.5 border-t-0 mx-5 bg-black " />
@@ -51,9 +51,9 @@ const MangasAuthor = ({ profileId }) => {
         </div>
       </div>
       <div className="w-full p-5 flex justify-center">
-        <p className="bg-orange-500 text-white rounded-xl h-7 flex justify-center items-center font-light text-sm w-2/4 sm:w-1/5 lg:w-1/5 cursor-pointer ">
+        <Link to="/mymangas" className="bg-orange-500 text-white rounded-xl h-7 flex justify-center items-center font-light text-sm w-2/4 sm:w-1/5 lg:w-1/5 cursor-pointer ">
           Manage!
-        </p>
+        </Link>
       </div>
     </>
   );

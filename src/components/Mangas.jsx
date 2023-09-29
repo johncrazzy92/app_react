@@ -95,43 +95,48 @@ const Mangas = () => {
 
   return (
     <>
+      <img className='absolute max-h-[35vh] sm:max-h-[40vh] md:max-h-[45vh] w-full object-cover rounded-b-2xl' src='../../public/img/bg-mangas.png' alt='' />
       <NavBar />
-      <div className='w-full h-96 items-center justify-center bg-top flex flex-col' style={{ backgroundImage: "url('../../public/img/bg-mangas.png')" }}>
-        <h1 className='text-white text-6xl'>Mangas</h1>
-        <input onInput={(e) => applyFilters('text', e.target.value)} className='rounded h-12 p-4 w-11/12 mt-8 lg:mt-24 ' type="text" placeholder=' Find your manga here' />
-      </div>
-      <div className='flex items-center justify-center '>
-        {categories?.map((category) => (
-          <button
-            onClick={() => applyFilters('check', category._id)}
-            key={category._id}
-            className='rounded p-1 m-1 mb-2 '
-            style={{ backgroundColor: category.color }}
-          >{category.name}</button>
-        ))}
+      <div className='flex flex-col justify-center items-center w-screen'>
+        <div className="z-20 w-8/12">
+          <h1 className='pt-20 text-white text-6xl text-center'>Mangas</h1>
+          <input onInput={(e) => applyFilters('text', e.target.value)} className='rounded h-12 p-4 w-11/12 mt-8 lg:mt-24 ' type="text" placeholder=' Find your manga here' />
+        </div>
+        <div className='flex items-center justify-center z-20 '>
+          {categories?.map((category) => (
+            <button
+              onClick={() => applyFilters('check', category._id)}
+              key={category._id}
+              className='rounded p-1 m-1 mb-2 '
+              style={{ backgroundColor: category.color }}
+            >{category.name}</button>
+          ))}
+        </div>
       </div>
       <div className="w-full min-h-[47vh] justify-center items-center flex flex-wrap gap-10">
         {noElements ? (
           <div>{noElementsMessage}</div>) : (
           mangas?.map((manga) => (
-            <div className='w-72 md:w-80 lg:w-96 h-36 md:h-40 lg:h-44 bg-gray-200 flex justify-between rounded-2xl ' key={manga._id}>
-              <div className='w-3 h-4/5 p-1' style={{ background: manga.category_id.color }}></div>
-              <div>
-                <div>
+            <div className='"bg-white relative w-[290px] h-[160px]  m-3 flex justify-between items-center rounded-lg drop-shadow-md' key={manga._id}>
+              <div className='h-5/6 w-2' style={{ background: manga.category_id.color }}></div>
+              <div className='flex flex-col gap-2'>
+                <div className=''>
                   <div className='w-36 text-neutral-800 text-base font-medium leading-none ml-1' >{manga.title}</div>
                   <div className='w-36 text-base font-normal leading-none ml-1 mb-3' style={{ color: manga.category_id.color }} >{manga.category_id.name}</div>
                 </div>
                 <div >
-                  <Link to={`/manga/${manga._id}`} className='p-1 ml-2 bg-emerald-500 rounded-lg'>Read</Link>
+                  <Link to={`/manga/${manga._id}`} className='p-2 cursor-pointer bg-emerald-500 rounded-lg'>Read</Link>
                 </div>
               </div>
-              <img className='w-2/5  object-cover rounded-l-full gap-3 ' src={manga.cover_photo} alt="" />
+              <div className="w-1/3">
+                <img className='h-[160px]   object-cover rounded-l-full' src={manga.cover_photo} alt="" />
+              </div>
             </div>
           ))
         )}
       </div>
       <div className='flex gap-3 justify-center mt-3'>
-        <button className='p-1 bg-orange-500 rounded' disabled={!prev} onClick={handlePrev}>Prev</button>
+        <button className="p-1 bg-orange-500 rounded" disabled={!prev} onClick={handlePrev}>Prev</button>
         <button className='p-1 bg-orange-500 rounded' disabled={!next} onClick={handleNext}>Next</button>
       </div>
       <Footer />
