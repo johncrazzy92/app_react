@@ -19,6 +19,7 @@ import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
 import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
+import UploadTest from "../components/pruebas/UploadTest";
 
 const isLogged = authorsReducer.isLogged;
 
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
     element: <Alert />,
   },
   {
-    path: "/:id/chapter-form",
+    path: "/chapter-form/:id",
     element:  <ChapterForm /> 
   },
   {
@@ -113,7 +114,9 @@ const router = createBrowserRouter([
       path: "/admin",
       element:<AdminPanel/>
     }]
-  }
+  },
+  {path: "/test",
+element: <UploadTest/>}
 ]);
 
 export default router;
