@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import NavBar from '../layouts/NavBar';
 import Footer from './Footer';
 import Alert from './componentesMangas/Alert';
+import { GoogleLogin } from '@react-oauth/google'; 
+import { useDispatch } from 'react-redux'; 
+import saveAuthors from '../redux/actions/me_authors'; 
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +16,7 @@ const Register = () => {
   const [sendNotification, setSendNotification] = useState(false);
   const [alert, setAlert] = useState([]);
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch(); // Si usas Redux, asegúrate de tener el store configurado
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,35 +35,74 @@ const Register = () => {
   };
 
   const handleSignUpClick = async () => {
-
     const data = {
       email,
       password,
       photo
     };
-    console.log(data)
-    try {
-      setShow(!show)
-      const response = await axios.post('http://localhost:8080/auth/register', data);
-      setAlert([response.data.message])
 
+    try {
+      setShow(!show);
+      const response = await axios.post('http://localhost:8080/auth/register', data);
+      setAlert([response.data.message]);
 
       console.log('Solicitud exitosa:', response);
     } catch (error) {
-
       console.error('Error al enviar la solicitud:', error);
-      setAlert([error.response.data.message])
+      setAlert([error.response.data.message]);
     }
+  };
 
+  const handleLoginWithGoogle = async (googleData) => {
+    const data = {
+      token: googleData.credential,
+    };
+
+    try {
+      const res = await axios.post('http://localhost:8080/auth/google-signin', data);
+      let token = res.data.response;
+      dispatch(saveAuthors(token));
+      localStorage.setItem('token', res.data.response.token);
+      localStorage.setItem('user', res.data.response.user.email);
+
+      if (res.data.response.user.created) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registrado con éxito',
+          text: '¡Tu cuenta ha sido creada y has iniciado sesión con éxito!',
+        });
+      } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'Inicio de sesión correcto',
+          text: '¡Has iniciado sesión con éxito!',
+        });
+      }
+    } catch (error) {
+      setShow(!show);
+      setAlert([error.response.data.message]);
+
+      Swal.fire({
+        icon: 'error',
+        title: "Oops it seems you don't have an account",
+        text: 'if you just created one check your email',
+      });
+    }
+  };
+
+  const handleLoginFailure = (error) => {
+    console.error('Error al iniciar sesión con Google:', error);
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al iniciar sesión con Google',
+      text: 'Ha ocurrido un error al iniciar sesión con Google.',
+    });
   };
 
   return (
     <>
-      {show && <Alert
-        alert={alert}
-        setShow={setShow}
-        show={show}
-      />}
+      {show && <Alert alert={alert} setShow={setShow} show={show} />}
       <NavBar />
       <div className='flex min-h-screen'>
         <div className='w-full lg:w-1/2'>
@@ -98,6 +142,14 @@ const Register = () => {
             </div>
             <button onClick={handleSignUpClick}>Sign up</button>
             <p>Already have an account? <Link to={``}>Log in</Link></p>
+            <div className='mt-4'>
+              <GoogleLogin
+                buttonText="Sign up with Google"
+                onSuccess={handleLoginWithGoogle}
+                onFailure={handleLoginFailure} // Utiliza handleLoginFailure aquí
+                cookiePolicy={'single_host_origin'}
+              />
+            </div>
             <p>Go back to <Link to={`/`}>home page</Link></p>
           </div>
         </div>

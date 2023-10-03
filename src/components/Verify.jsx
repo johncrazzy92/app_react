@@ -10,7 +10,7 @@ const Verify = () => {
     const verifyAccount = async () => {
         // obtener el codigo de verificacion de la url
         const url = new URL(window.location.href);
-        var code = url.searchParams.get("code");
+        const code = url.searchParams.get("code");
         
         try {
             // enviar el codigo de verificacion al backend
