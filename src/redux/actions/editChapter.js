@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 const editChapterAction = createAsyncThunk(
   "editChapter",
   async ({ id, info, token }) => {
@@ -15,8 +14,6 @@ const editChapterAction = createAsyncThunk(
           },
         }
       );
-
-      
       return response.data;
     } catch (error) {
       

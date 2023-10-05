@@ -16,15 +16,10 @@ const Page = () => {
   const { id, page } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  /* const chapterReducer = useSelector((store) => store.chapterReducer.title); */
-  const { title, number } = useSelector((store) => store.chapterReducer);
+  const { title, number } = useSelector((store) => store.chapter);
   console.log(title)
   console.log(number)
-  /* console.log(chapterReducer) */
   console.log(dispatch)
-
-
-
 
   useEffect(() => {
     axios
@@ -42,9 +37,9 @@ const Page = () => {
   console.log(next);
   const handleNext = () => {
     if (Number(page) >= chapter.pages.length - 1) {
-      navigate(`/chapter/${next}/${1}`);
+      navigate(`/chapterPage/${next}/${1}`);
     } else {
-      navigate(`/chapter/${id}/${Number(page) + 1}`);
+      navigate(`/chapterPage/${id}/${Number(page) + 1}`);
     }
   };
 
@@ -52,19 +47,19 @@ const Page = () => {
     if (Number(page) <= 1) {
       navigate(`/manga/${chapter.manga_id}`);
     } else {
-      navigate(`/chapter/${id}/${Number(page) - 1} `);
+      navigate(`/chapterPage/${id}/${Number(page) - 1} `);
     }
   };
 
   return (
     <>
-      <NavBar />
-      <div className="h-screen pt-32 w-full">
-        <div className="w-full h-12 bg-gradient-to-t from-orange-500 to-orange-600 text-center flex flex-col justify-center items-center">
-          <p className="text-white text-xs">n. de cap {Number(number)}</p>
-          <p className="text-white text-xs"> nombre del cap{title}</p>
+      <NavBar/>
+      <div className="w-full">
+        <div className="w-full h-28 bg-gradient-to-t from-orange-500 to-orange-600 text-center flex flex-col justify-center items-center">
+          <p className="text-white text-xs">N : {Number(number)}</p>
+          <p className="text-white text-xs"> {title}</p>
         </div>
-        <div className="w-full h-4/6 mt-5 flex items-center justify-center">
+        <div className="w-full  mt-5 flex items-center justify-center">
           <div onClick={handlePrev} className="w-1/2">
             <img
               className=" cursor-pointer absolute left-5 bg-white rounded-full p-2 opacity-50"
@@ -73,7 +68,7 @@ const Page = () => {
             />
           </div>
           <img
-            className="w-96 h-full"
+            className=" md-w-10/12 h-full"
             src={chapter?.pages[Number(page) - 1]}
             alt=""
           />

@@ -51,7 +51,6 @@ const Footer = () => {
           <Link to={"/donations"}
             className="flex items-center justify-center bg-gradient-to-t from-orange-500 to-orange-600 text-white gap-4 p-2 rounded"
             href=""
-            
           >
             Donate
             <svg
