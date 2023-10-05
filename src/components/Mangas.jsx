@@ -118,19 +118,20 @@ const Mangas = () => {
         {noElements ? (
           <div>{noElementsMessage}</div>) : (
           mangas?.map((manga) => (
-            <div className='"bg-white relative w-[290px] h-[160px]  m-3 flex justify-between items-center rounded-lg drop-shadow-md' key={manga?._id}>
+            <div className='"bg-white relative w-[290px] h-[160px]  m-3 flex justify-between items-center rounded-lg drop-shadow-md' key={manga._id}>
               <div className='h-5/6 w-2' style={{ background: manga?.category_id.color }}></div>
               <div className='flex flex-col gap-2'>
                 <div className=''>
-                  <div className='w-36 text-neutral-800 text-base font-medium leading-none ml-1' >{manga?.title}</div>
-                  <div className='w-36 text-base font-normal leading-none ml-1 mb-3' style={{ color: manga?.category_id.color }} >{manga?.category_id.name}</div>
+                  <div className='w-36 text-neutral-800 text-base font-medium leading-none ml-1' >{manga.title}</div>
+                  <div className='w-36 text-base font-normal leading-none ml-1 mb-3' style={{ color: manga.category_id.color }} >{manga.category_id.name}</div>
                 </div>
                 <div >
-                  <Link to={`/manga/${manga?._id}`} className='p-2 cursor-pointer bg-emerald-500 rounded-lg'>Read</Link>
+                  <Link to={`/manga/${manga._id}`} className='p-2 cursor-pointer bg-emerald-500 rounded-lg'>Read</Link>
                 </div>
               </div>
               <div className="w-1/3">
-                <img className='h-[160px]   object-cover rounded-l-full' src={manga?.cover_photo} alt="" />
+                <img className='h-[160px]   object-cover rounded-l-full' src={manga.cover_photo} alt="" />
+
               </div>
             </div>
           ))

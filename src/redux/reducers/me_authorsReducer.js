@@ -4,8 +4,8 @@ import logoutUser from "../actions/logout.js";
 import signinToken from "../actions/session.js";
 
 let initialState = {
-    user: null,
-    token: "",
+  user: null,
+  token: "",
 }
 
 let authorsReducer = createReducer(initialState, (builder) =>

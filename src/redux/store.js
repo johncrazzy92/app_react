@@ -8,6 +8,7 @@ import commentReducer from "./reducers/commentReducer.js"
 import myMangasReducer from './reducers/mangas.js'
 import chapterReducerEdit from './reducers/chapterReducer.js'
 import authors from "./reducers/authors.js"
+import messagesBotReducer from './reducers/messagesBot.js'
 
 export const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
         chapterReducerEdit,
         myMangasReducer,
         authors,
+        messagesBotReducer,
     }
 })
 

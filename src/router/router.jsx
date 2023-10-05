@@ -21,11 +21,11 @@ import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
 import { AdminPanel } from "../pages/AdminPanel";
+import Socket from "../components/componentesMangas/Socket";
+import Chatbot from "../components/componentesMangas/ChatBot";
 import UploadTest from "../components/pruebas/UploadTest";
 
-
 const isLogged = authorsReducer.isLogged;
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
     path: "/mymangas",
     element: <MyMangas />,
   },
-  { 
+  {
     path: "/login",
     element: <Login />,
   },
@@ -102,6 +102,10 @@ const router = createBrowserRouter([
     element:  <EditChapter/>,
   },
   {
+    path: "/edit/:manga_id",
+    element: <EditChapter />,
+  },
+  {
     path: "/donations",
     element: <Donations/>,
   },
@@ -115,12 +119,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <LayoutProfileMe/> ,
-    children:[{
+    element: <LayoutProfileMe />,
+    children: [{
       path: "/admin",
-      element:<AdminPanel/>
+      element: <AdminPanel />
     }]
   },
+  {
+    path: "/socket",
+    element: <Socket />
+  },
+  {
+    path: "/chat-bt",
+    element: <Chatbot />
+  }
   {path: "/test",
 element: <UploadTest/>}
 ]);
