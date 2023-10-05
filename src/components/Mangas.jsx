@@ -33,15 +33,16 @@ const Mangas = () => {
         } else {
           setNoElements(false);
         }
+        if (res && res.data && res.data.mangas) {
         setMangas(res.data.mangas);
         setPageActual(res.data.page);
         setPrev(res.data.prev);
-        setNext(res.data.next);
+        setNext(res.data.next);}
       })
       .catch((err) => console.log(err));
   };
 
-  const getCategories = () =>
+  const getCategories = async () =>
     axios(`http://localhost:8080/categories`)
       .then((res) => {
         setCategories(res.data.response);
@@ -118,7 +119,7 @@ const Mangas = () => {
           <div>{noElementsMessage}</div>) : (
           mangas?.map((manga) => (
             <div className='"bg-white relative w-[290px] h-[160px]  m-3 flex justify-between items-center rounded-lg drop-shadow-md' key={manga._id}>
-              <div className='h-5/6 w-2' style={{ background: manga.category_id.color }}></div>
+              <div className='h-5/6 w-2' style={{ background: manga?.category_id.color }}></div>
               <div className='flex flex-col gap-2'>
                 <div className=''>
                   <div className='w-36 text-neutral-800 text-base font-medium leading-none ml-1' >{manga.title}</div>
@@ -130,6 +131,7 @@ const Mangas = () => {
               </div>
               <div className="w-1/3">
                 <img className='h-[160px]   object-cover rounded-l-full' src={manga.cover_photo} alt="" />
+
               </div>
             </div>
           ))

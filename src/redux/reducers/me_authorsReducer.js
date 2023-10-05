@@ -17,32 +17,28 @@ let authorsReducer = createReducer(initialState, (builder) =>
         token: action.payload.token,
 
       }
-      return nuevoEstado
-    })
-    .addCase(logoutUser, (state) => {
-      let nuevoEstado = {
-        ...state,
-        user: null,
-        token: null,
-      }
-
-      return nuevoEstado
-    })
-    .addCase(signinToken.fulfilled, (state, action) => {
-      console.log(action);
-      const newState = {
-        ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-      }
-      return newState
-    })
-    .addCase(signinToken.pending, (state) => {
-
-      const newState = {
-        ...state
-      };
-      return newState;
+      return nuevoEstado })
+        .addCase(logoutUser, (state) => {
+            let nuevoEstado = {
+                ...state,
+            user: null,
+            token: null,
+          }
+        return nuevoEstado })
+    .addCase(signinToken.fulfilled,(state,action)=>{
+        console.log(action);
+        const newState = {
+            ...state,
+            user: action.payload.user,
+            token: action.payload.token,
+        }
+        return newState  })
+    .addCase(signinToken.pending,(state)=>{
+        
+        const newState = {
+            ...state
+        };
+        return newState;
     })
 )
 

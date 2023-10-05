@@ -37,9 +37,9 @@ const Page = () => {
   console.log(next);
   const handleNext = () => {
     if (Number(page) >= chapter.pages.length - 1) {
-      navigate(`/chapter/${next}/${1}`);
+      navigate(`/chapterPage/${next}/${1}`);
     } else {
-      navigate(`/chapter/${id}/${Number(page) + 1}`);
+      navigate(`/chapterPage/${id}/${Number(page) + 1}`);
     }
   };
 
@@ -47,7 +47,7 @@ const Page = () => {
     if (Number(page) <= 1) {
       navigate(`/manga/${chapter.manga_id}`);
     } else {
-      navigate(`/chapter/${id}/${Number(page) - 1} `);
+      navigate(`/chapterPage/${id}/${Number(page) - 1} `);
     }
   };
 
