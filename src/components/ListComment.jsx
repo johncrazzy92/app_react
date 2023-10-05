@@ -26,7 +26,7 @@ const Comment = ({ open, setOpen, chapter_id, chapterName }) => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    
+
     loadComments(currentPage);
   }, [currentPage]);
 
@@ -64,13 +64,13 @@ const Comment = ({ open, setOpen, chapter_id, chapterName }) => {
       token
     };
 
-   
+
     try {
       await dispatch(createComment(info));
-     
+
       comment.current.value = '';
       toast.success('Comment created successfully');
-     
+
       loadComments(currentPage);
     } catch (error) {
       toast.error('Error creating comment');
@@ -108,7 +108,7 @@ const Comment = ({ open, setOpen, chapter_id, chapterName }) => {
                 {comments.map((comment, index) => (
                   <div key={index} className='rounded-xl  p-1'>
                     {
-                      (comment.user_id.email == user.email) ?
+                      (comment.user_id?.email === user.email) ?
                         <div className='flex justify-between gap-2'>
                           <button onClick={() => deleteComment(comment)}>
                             <img src="../img/borrar.svg" alt="" />
@@ -116,12 +116,12 @@ const Comment = ({ open, setOpen, chapter_id, chapterName }) => {
                           <button onClick={() => editComment(comment)}>
                             <img src="../img/editar.svg" alt="" />
                           </button>
-                          <h2>{comment.user_id.email}</h2>
-                          <img src={comment.user_id.photo} className='w-8 rounded-full object-cover' alt="" />
+                          <h2>{comment.user_id?.email || ''}</h2>
+                          <img src={comment.user_id?.photo} className='w-8 rounded-full object-cover' alt="" />
                         </div> :
                         <div className='flex items-center gap-2'>
-                          <img src={comment.user_id.photo} className='w-8 rounded-full object-cover' alt="" />
-                          <h2>{comment.user_id.email}</h2>
+                          <img src={comment.user_id?.photo} className='w-8 rounded-full object-cover' alt="" />
+                          <h2>{comment.user_id?.email || ''}</h2>
                         </div>
                     }
                     {edit.show ? <EditComment edit={edit} setEdit={setEdit} user={user} token={token} /> : null}
