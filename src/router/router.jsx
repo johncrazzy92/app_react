@@ -132,7 +132,7 @@ const router = createBrowserRouter([
   {
     path: "/chat-bt",
     element: <Chatbot />
-  }
+  },
   {path: "/test",
 element: <UploadTest/>}
 ]);
