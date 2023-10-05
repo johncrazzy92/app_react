@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import ChapterUpload from './componentesMangas/ChapterUpload';
 
+
 const ChapterForm = () => {
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState([]);
@@ -33,7 +34,6 @@ const ChapterForm = () => {
        order: inputOrder,
      };
      
-     
      formData.append('chapterData', JSON.stringify(newChapterData)); 
 
         imgUp.forEach((file) => {
@@ -48,8 +48,8 @@ const ChapterForm = () => {
       }
       );
       setMessage([]); 
-      setDataResponse(data);
-      console.log(data);
+
+      setDataResponse(data); 
     } catch (error) {
       console.log(error); 
       console.error(error);

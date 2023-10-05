@@ -24,7 +24,6 @@ let authorsReducer = createReducer(initialState, (builder) =>
             user: null,
             token: null,
           }
-
         return nuevoEstado })
     .addCase(signinToken.fulfilled,(state,action)=>{
         console.log(action);

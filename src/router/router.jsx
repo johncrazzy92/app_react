@@ -14,12 +14,15 @@ import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
+import Donations from "../components/Donations";
+import { element } from "prop-types";
+import DonationOk from "../components/DonationOk";
 import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
-import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
 import UploadTest from "../components/pruebas/UploadTest";
+
 
 const isLogged = authorsReducer.isLogged;
 
@@ -95,17 +98,20 @@ const router = createBrowserRouter([
     element:  <ChapterForm /> 
   },
   {
+    path: "/edit/:manga_id",
+    element:  <EditChapter/>,
+  },
+  {
+    path: "/donations",
+    element: <Donations/>,
+  },
+  {
+    path: "/donationOk",
+    element: <DonationOk/>,
+  },
+  {
     path: "/listComment",
     element: <ListComments />,
-  },
- 
-  {
-    path: "/edit/:manga_id",
-    element: <EditChapter/>,
-  },
-  { 
-    path: "/payment/create-order",
-    element: <Donation/>
   },
   {
     path: "/admin",
