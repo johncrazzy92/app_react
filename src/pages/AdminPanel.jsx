@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import background from "../../public/img/background_admin.jfif";
 import UserIcon from "../components/icons/UserIcon";
 import { useDispatch, useSelector } from "react-redux";
@@ -111,14 +111,12 @@ export const AdminPanel = () => {
                             className="sr-only"
                           />
                           <div
-                            className={`box ${
-                              inactive.active ? "bg-orange-600" : "bg-gray-400"
-                            } block h-6 w-12 rounded-full`}
+                            className={`box ${inactive.active ? "bg-orange-600" : "bg-gray-400"
+                              } block h-6 w-12 rounded-full`}
                           ></div>
                           <div
-                            className={`dot absolute bg-white top-1 flex h-4 w-4 items-center justify-center rounded-full transition ${
-                              inactive.active ? "right-1" : "left-1"
-                            }
+                            className={`dot absolute bg-white top-1 flex h-4 w-4 items-center justify-center rounded-full transition ${inactive.active ? "right-1" : "left-1"
+                              }
                             `}
                           ></div>
                         </div>
@@ -165,14 +163,12 @@ export const AdminPanel = () => {
                             className="sr-only"
                           />
                           <div
-                            className={`box ${
-                              active.active ? "bg-orange-600" : "bg-gray-400"
-                            } block h-6 w-12 rounded-full`}
+                            className={`box ${active.active ? "bg-orange-600" : "bg-gray-400"
+                              } block h-6 w-12 rounded-full`}
                           ></div>
                           <div
-                            className={`dot absolute bg-white top-1 flex h-4 w-4 items-center justify-center rounded-full transition ${
-                              active.active ? "right-1" : "left-1"
-                            }
+                            className={`dot absolute bg-white top-1 flex h-4 w-4 items-center justify-center rounded-full transition ${active.active ? "right-1" : "left-1"
+                              }
                             `}
                           ></div>
                         </div>

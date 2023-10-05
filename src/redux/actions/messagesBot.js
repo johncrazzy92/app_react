@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const messagesBot = createAction("messageBot", (messages) => {
+const messagesBot = createAction("messagesBot", (messages) => {
     return {
         payload: messages
     }
