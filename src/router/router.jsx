@@ -8,18 +8,17 @@ import Chapters from "../components/Chapters";
 import Mangas from "../components/Mangas";
 import Page from "../pages/page";
 import Chapter from "../components/Chapter";
-
-import { element } from "prop-types";
 import Login from "../pages/Login";
-
-
 import MangaForm from "../pages/MangaForm";
 import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
 import EditChapter from "../components/EditChapter";
-import Donation from "../components/Donation";
+import Donations from "../components/Donations";
+import { element } from "prop-types";
+import DonationOk from "../components/DonationOk";
+
 
 const isLogged = true;
 
@@ -104,8 +103,12 @@ const router = createBrowserRouter([
     element:  <EditChapter/>,
   },
   {
-    path: "/payment/create-order",
-    element: <Donation/>
+    path: "/donations",
+    element: <Donations/>,
+  },
+  {
+  path: "/donationOk",
+  element: <DonationOk/>,
   }
 
 ]);
