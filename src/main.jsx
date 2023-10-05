@@ -3,15 +3,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store.js"
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import ChatBot from "./components/componentesMangas/ChatBot.jsx";
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 
   <>
     <Provider store={store}>
-      <App />
-      <ChatBot />
+      <GoogleOAuthProvider clientId="469457803946-1surfoqlkb38l947qodpfsv8dp3gsh15.apps.googleusercontent.com">
+        <App />
+         <ChatBot />
+      </GoogleOAuthProvider>
     </Provider>
   </>
 );

@@ -21,9 +21,11 @@ import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
 import { AdminPanel } from "../pages/AdminPanel";
+import Verify from "../components/Verify";
 import Socket from "../components/componentesMangas/Socket";
 import Chatbot from "../components/componentesMangas/ChatBot";
 import UploadTest from "../components/pruebas/UploadTest";
+
 
 const isLogged = authorsReducer.isLogged;
 const router = createBrowserRouter([
@@ -124,6 +126,9 @@ const router = createBrowserRouter([
       path: "/admin",
       element: <AdminPanel />
     }]
+  }, {
+    path: "/auth/verify",
+    element: <Verify />,
   },
   {
     path: "/socket",
