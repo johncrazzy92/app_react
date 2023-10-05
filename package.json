@@ -28,7 +28,7 @@
     "sweetalert2": "^11.7.28",
     "wallet": "^2.1.535",
     "redux-thunk": "^2.4.2",
-    "socket.io-client": "^4.7.2",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
