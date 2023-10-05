@@ -14,15 +14,20 @@ import Register from "../components/Register";
 import Alert from "../components/Alert";
 import ChapterForm from "../components/ChapterForm";
 import NotAllow from "../components/NotAllow";
+import Donations from "../components/Donations";
+import { element } from "prop-types";
+import DonationOk from "../components/DonationOk";
 import authorsReducer from "../redux/reducers/me_authorsReducer";
 import ListComments from "../components/ListComment";
 import EditChapter from "../components/EditChapter";
-import Donation from "../components/Donation";
 import { AdminPanel } from "../pages/AdminPanel";
 import Verify from "../components/Verify";
+import Socket from "../components/componentesMangas/Socket";
+import Chatbot from "../components/componentesMangas/ChatBot";
+import UploadTest from "../components/pruebas/UploadTest";
+
 
 const isLogged = authorsReducer.isLogged;
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
     path: "/mymangas",
     element: <MyMangas />,
   },
-  { 
+  {
     path: "/login",
     element: <Login />,
   },
@@ -91,33 +96,50 @@ const router = createBrowserRouter([
     element: <Alert />,
   },
   {
-    path: "/:id/chapter-form",
+    path: "/chapter-form/:id",
     element:  <ChapterForm /> 
+  },
+  {
+    path: "/edit/:manga_id",
+    element:  <EditChapter/>,
+  },
+  {
+    path: "/edit/:manga_id",
+    element: <EditChapter />,
+  },
+  {
+    path: "/donations",
+    element: <Donations/>,
+  },
+  {
+    path: "/donationOk",
+    element: <DonationOk/>,
   },
   {
     path: "/listComment",
     element: <ListComments />,
   },
- 
-  {
-    path: "/edit/:manga_id",
-    element: <EditChapter/>,
-  },
-  { 
-    path: "/payment/create-order",
-    element: <Donation/>
-  },
   {
     path: "/admin",
-    element: <LayoutProfileMe/> ,
-    children:[{
+    element: <LayoutProfileMe />,
+    children: [{
       path: "/admin",
-      element:<AdminPanel/>
+      element: <AdminPanel />
     }]
   }, {
     path: "/auth/verify",
     element: <Verify />,
-  }
+  },
+  {
+    path: "/socket",
+    element: <Socket />
+  },
+  {
+    path: "/chat-bt",
+    element: <Chatbot />
+  },
+  {path: "/test",
+element: <UploadTest/>}
 ]);
 
 export default router;

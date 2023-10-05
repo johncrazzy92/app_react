@@ -2,7 +2,10 @@ import background from "../../public/img/2a878f6c93a6f35eec672a24a51c2284.png";
 import logo from "../../public/img/Logo Dos.png";
 import { Link } from "react-router-dom";
 
+
 const Footer = () => {
+  
+
   return (
     <div className="w-full lg:bg-white flex flex-col gap-5 pt-1 xl:pt-9 xl:h-96">
       <img src={background} alt="Portada Jump" />
@@ -45,8 +48,7 @@ const Footer = () => {
               />
             </svg>
           </div>
-          <Link
-            to={"/payment/create-order"}
+          <Link to={"/donations"}
             className="flex items-center justify-center bg-gradient-to-t from-orange-500 to-orange-600 text-white gap-4 p-2 rounded"
             href=""
           >

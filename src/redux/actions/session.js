@@ -3,15 +3,15 @@ import axios from "axios";
 
 const session = createAsyncThunk("sesionCheck", async (token) => {
     try {
-        const response = await axios.post("http://localhost:8080/auth/signinToken",{},{
+        const response = await axios.post("http://localhost:8080/auth/signinToken", {}, {
             headers: {
-                Authorization:"Bearer " + token
+                Authorization: "Bearer " + token
             }
         })
-        return{user: response.data.response.user, token: token}
-       } catch (error) {
+        return { user: response.data.response.user, token: token }
+    } catch (error) {
         console.log(error)
-       }
-    })
+    }
+})
 
 export default session;

@@ -67,15 +67,6 @@ function Display({ close, switchMenu }) {
                   New Manga
                 </Link>
               )} 
-              {(user.role === 1 || user.role === 2 || user.role === 3) && (
-                <Link
-                  className="py-3 rounded hover:bg-white hover:text-orange-600"
-                  to={
-                    user.role === 1 || user.role === 2 || user.role === 3 ? "/manga_id/chapter-form" : "null"
-                  }>
-                  New Chapter
-                </Link>
-              )} 
               
             </>) : (
             <>
