@@ -47,7 +47,6 @@ const MangaForm = () => {
       );
       dispatch(postOneManga(responsed.data.response));
       //---------alerts
-      console.log(responsed);
       setAlert([responsed.data.message]);
     } catch (err) {
       console.log(err);
