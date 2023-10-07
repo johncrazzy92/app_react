@@ -1,7 +1,7 @@
-import UbicationIcon from "../components/icons/ubicationIcon";
-import BirthIcon from "../components/icons/BirthIcon";
-import EditIcon from "../components/icons/EditIcon";
-import React from "react";
+import UbicationIcon from "../components/icons/UbicationIcon.jsx";
+import BirthIcon from "../components/icons/BirthIcon.jsx";
+import EditIcon from "../components/icons/EditIcon.jsx";
+
 
 const AuthorProfile = ({ oneAuthor }) => {
   function upper(name) {
