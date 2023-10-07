@@ -38,7 +38,7 @@ const EditModal = ({ setIsOpen, isOpen, manga, token, alert, setAlert, setShow }
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/categories")
+      .get("https://backendminga.onrender.com/categories")
       .then((response) => {
         setCategory(response.data.response);
         console.log(response)
@@ -124,7 +124,7 @@ const EditModal = ({ setIsOpen, isOpen, manga, token, alert, setAlert, setShow }
               dispatch(updateManga({ id, title, cover_photo, description, category_id }));
 
               /* axios
-                .put(`http://localhost:8080/mangas/${id}`, {
+                .put(`https://backendminga.onrender.com/mangas/${id}`, {
                   title,
                   cover_photo,
                   description,

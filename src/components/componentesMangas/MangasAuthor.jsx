@@ -12,7 +12,7 @@ const MangasAuthor = ({ profileId }) => {
   const [mangas_New, setMangas_New] = useState({});
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/mangas/new/${profileId}`)
+      .get(`https://backendminga.onrender.com/mangas/new/${profileId}`)
       .then((res) => {
         setMangas_New(res.data);
         dispatch(setMangasNews(res.data))

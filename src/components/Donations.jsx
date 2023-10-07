@@ -8,7 +8,7 @@ const Donations = () => {
 
     const handleClick = async () => {
         try {
-            const response = await axios.post("http://localhost:8080/payment/create-order10");
+            const response = await axios.post("https://backendminga.onrender.com/payment/create-order10");
             const linkPago = response.data.init_point;
             setLinkPago(linkPago);
 
@@ -31,8 +31,8 @@ const Donations = () => {
 
     return (
         <>
-            <NavBar/>
-            <div className='w-full h-screen flex flex-col items-center' style={{ backgroundImage: `url("./img/fondoDonations")`}}>
+            <NavBar />
+            <div className='w-full h-screen flex flex-col items-center' style={{ backgroundImage: `url("./img/fondoDonations")` }}>
                 <h1 className=' text-7xl text-center mt-40 font-bold text-orange-600'>Your contribution helps us to continue improving and creating!!</h1>
                 <div className='flex w-full h-screen gap-2 justify-around items-center'>
                     <button onClick={handleClick} className="w-1/4 flex items-center justify-center bg-white text-orange-600 font-bold gap-4 p-2 rounded">Donate $1.000</button>

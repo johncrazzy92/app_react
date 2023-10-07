@@ -10,7 +10,7 @@ const MangaForm = () => {
   const [alert, setAlert] = useState([]);
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
-  const [imgUp , setImgUp] = useState([])
+  const [imgUp, setImgUp] = useState([])
   //---------dispatch
   const dispatch = useDispatch();
   //---------------store
@@ -30,20 +30,21 @@ const MangaForm = () => {
     const formData = new FormData()
 
     const mangaToPost = {
-      author_id: id, 
+      author_id: id,
       title: titleInput.current.value.toLowerCase(),
       category_id: categoryInput.current.value.toLowerCase(),
       cover_photo: imageInput.current.value.toLowerCase(),
       description: descriptionInput.current.value.toLowerCase(),
     };
-    formData.append("manga",JSON.stringify(mangaToPost))
-    formData.append("file",imgUp)
+    formData.append("manga", JSON.stringify(mangaToPost))
+    formData.append("file", imgUp)
     setShow(!show);
     try {
       const responsed = await axios.post(
-        "http://localhost:8080/mangas",
-        formData,{
-          headers: { authorization: `Bearer ${token}` },}
+        "https://backendminga.onrender.com/mangas",
+        formData, {
+        headers: { authorization: `Bearer ${token}` },
+      }
       );
       dispatch(postOneManga(responsed.data.response));
       //---------alerts
@@ -56,7 +57,7 @@ const MangaForm = () => {
   //-------------selector
   useEffect(() => {
     axios
-      .get("http://localhost:8080/categories")
+      .get("https://backendminga.onrender.com/categories")
       .then((res) => {
         setCategory(res.data.response);
       })
@@ -105,29 +106,29 @@ const MangaForm = () => {
             <label htmlFor="photo"></label>
 
             <div className="hidden md:flex ">
-        <label className="cursor-pointer bg-orange-600 rounded-md w-28 flex justify-center items-center text-white h-8">
-          Upload img
-          <input
-            type="file"
-            name='file'
-            accept=".png,.jpeg,.jpg"
-            style={{ display: "none" }}
-            onChange={(e) => {
-              setImgUp(e.target.files[0])
-              console.log(e.target.files[0]);
-            }}
-          />
-        </label>
-        {imgUp ? (
-          <p className="flex justify-center items-center">
-            {imgUp?.length} archivo(s) seleccionado(s)
-          </p>
-        ) : (
-          <p className="flex justify-center items-center">
-            Ningún archivo seleccionado
-          </p>
-        )}
-      </div>
+              <label className="cursor-pointer bg-orange-600 rounded-md w-28 flex justify-center items-center text-white h-8">
+                Upload img
+                <input
+                  type="file"
+                  name='file'
+                  accept=".png,.jpeg,.jpg"
+                  style={{ display: "none" }}
+                  onChange={(e) => {
+                    setImgUp(e.target.files[0])
+                    console.log(e.target.files[0]);
+                  }}
+                />
+              </label>
+              {imgUp ? (
+                <p className="flex justify-center items-center">
+                  {imgUp?.length} archivo(s) seleccionado(s)
+                </p>
+              ) : (
+                <p className="flex justify-center items-center">
+                  Ningún archivo seleccionado
+                </p>
+              )}
+            </div>
             <input
               onChange={() => setImage(imageInput.current.value)}
               ref={imageInput}

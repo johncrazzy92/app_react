@@ -20,7 +20,7 @@ const AlertDelete = ({ show, setShow, setAlert, alert, setShowDelete, showDelete
                             const id = manga._id
                             setShowDelete(false);
                             dispatch(deleteManga(id));
-                            /* axios.delete(`http://localhost:8080/mangas/${id}`, {
+                            /* axios.delete(`https://backendminga.onrender.com/mangas/${id}`, {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
                                 },

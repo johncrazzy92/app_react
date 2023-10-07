@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const api = "http://localhost:8080/mangas";
+const api = "https://backendminga.onrender.com/mangas";
 const token = localStorage.getItem("token");
 const autorization = { headers: { Authorization: `Bearer ${token}` } };
 

@@ -6,21 +6,22 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Author = () => {
   const [profile, setProfile] = useState({});
-  const authorId = useSelector((store)=>store.me_authorsReducer.user.author)
+  const authorId = useSelector((store) => store.me_authorsReducer.user.author)
   useEffect(() => {
-    
-    if (!profile._id){
-    axios
-      .get("http://localhost:8080/authors/me/" + authorId)
 
-      .then((res) => {
-        setProfile(res.data.author);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }}, []);
- 
+    if (!profile._id) {
+      axios
+        .get("https://backendminga.onrender.com/authors/me/" + authorId)
+
+        .then((res) => {
+          setProfile(res.data.author);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   return (
     <>
       <AuthorProfile oneAuthor={profile} />

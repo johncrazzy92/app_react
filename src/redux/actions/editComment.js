@@ -4,10 +4,10 @@ import axios from "axios";
 const editComment = createAsyncThunk('editComment', async (info, { rejectWithValue }) => {
     try {
         console.log(info)
-        const res = await axios.put(`http://localhost:8080/comments/${info.comment_id}`, 
-        {
-            text: info.text
-        }, {
+        const res = await axios.put(`https://backendminga.onrender.com/comments/${info.comment_id}`,
+            {
+                text: info.text
+            }, {
             headers: {
                 Authorization: "Bearer " + info.token
             },

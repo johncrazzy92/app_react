@@ -8,7 +8,7 @@ const MangaDetails = () => {
   let { id } = useParams();
   async function getManga() {
     try {
-      let { data } = await axios.get(`http://localhost:8080/manga/${id}`);
+      let { data } = await axios.get(`https://backendminga.onrender.com/manga/${id}`);
       setManga(data.manga);
     } catch (error) {
       console.log(error);

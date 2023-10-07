@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { saveChapter } from '../redux/actions/chapters';
 
 const Page = () => {
-  const APIurl = "http://localhost:8080";
+  const APIurl = "https://backendminga.onrender.com";
   const [chapter, setChapter] = useState(null);
   const [next, setNext] = useState("");
   const { id, page } = useParams();
@@ -53,7 +53,7 @@ const Page = () => {
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <div className="w-full">
         <div className="w-full h-28 bg-gradient-to-t from-orange-500 to-orange-600 text-center flex flex-col justify-center items-center">
           <p className="text-white text-xs">N : {Number(number)}</p>

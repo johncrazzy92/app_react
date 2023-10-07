@@ -3,11 +3,11 @@ import axios from "axios";
 
 const commentAction = createAsyncThunk('comentario', async (info, { rejectWithValue }) => {
     try {
-        const { chapter_id, page, token } = info; 
-        const res = await axios.get('http://localhost:8080/comments', {
+        const { chapter_id, page, token } = info;
+        const res = await axios.get('https://backendminga.onrender.com/comments', {
             params: {
                 chapter_id,
-                page, 
+                page,
             },
             headers: {
                 Authorization: "Bearer " + token,

@@ -16,7 +16,7 @@ function Display({ close, switchMenu }) {
     };
 
     try {
-      await axios.post("http://localhost:8080/auth/signout", null, headers);
+      await axios.post("https://backendminga.onrender.com/auth/signout", null, headers);
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       dispatch(logoutUser());
@@ -34,7 +34,7 @@ function Display({ close, switchMenu }) {
       >
         <div className="flex justify-between text-white">
           <div className="flex gap-3">
-            <img className="h-7 rounded-full" src={user? user.photo : ""} alt="" />
+            <img className="h-7 rounded-full" src={user ? user.photo : ""} alt="" />
             <p className="cursor-pointer">{user ? user.email : "Account"}</p>
           </div>
           <img
@@ -47,7 +47,7 @@ function Display({ close, switchMenu }) {
         <div className=" text-white flex flex-col text-center gap-3 p-5">
           {user !== null ? (
             <>
-            <Link
+              <Link
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
                 to={"/"}>
                 Home
@@ -56,7 +56,7 @@ function Display({ close, switchMenu }) {
                 className="py-3 rounded hover:bg-white hover:text-orange-600"
                 to={"/author/me"}>
                 Profile
-              </Link>  
+              </Link>
               <Link onClick={signout} to={"/"} className="py-3 rounded hover:bg-white hover:text-orange-600">Sign out</Link>
               {(user.role === 1 || user.role === 2 || user.role === 3) && (
                 <Link
@@ -66,8 +66,8 @@ function Display({ close, switchMenu }) {
                   }>
                   New Manga
                 </Link>
-              )} 
-              
+              )}
+
             </>) : (
             <>
               <Link

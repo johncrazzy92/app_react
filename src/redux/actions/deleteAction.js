@@ -3,7 +3,7 @@ import axios from "axios";
 
 const deleteAction = createAsyncThunk('deleteAction', async (info, { rejectWithValue }) => {
     try {
-        const res = await axios.delete(`http://localhost:8080/comments/${info.comment_id}`, {
+        const res = await axios.delete(`https://backendminga.onrender.com/comments/${info.comment_id}`, {
             headers: {
                 Authorization: "Bearer " + info.token
             },

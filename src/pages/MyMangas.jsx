@@ -28,7 +28,7 @@ const MyMangas = () => {
   useEffect(() => {
     dispatch(mymangas());
     /* axios
-      .get(`http://localhost:8080/mangas/me`, {
+      .get(`https://backendminga.onrender.com/mangas/me`, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -67,7 +67,7 @@ const MyMangas = () => {
                 ></div>
                 <div className="flex flex-col">
                   <div className="flex absolute top-0 left-4 gap-4">
-                    <Link to={"/chapter-form/"+ manga._id} className="cursor-pointer">➕</Link>
+                    <Link to={"/chapter-form/" + manga._id} className="cursor-pointer">➕</Link>
                     <Link to={"/edit/" + manga._id} className="cursor-pointer">✏️</Link>
                   </div>
                   <div className="text-sm lg:text-xl font-bold absolute top-8 left-6">

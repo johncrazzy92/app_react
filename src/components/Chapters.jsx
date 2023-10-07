@@ -13,7 +13,7 @@ const Chapters = () => {
   async function getChapters() {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/chapters?manga_id=${id}`
+        `https://backendminga.onrender.com/chapters?manga_id=${id}`
       );
       setChapters(data);
       console.log(data);
@@ -21,7 +21,7 @@ const Chapters = () => {
       console.log(error);
     }
   }
-// 
+  // 
   useEffect(() => {
     getChapters();
   }, []);
@@ -65,7 +65,7 @@ const Chapters = () => {
                   <p>{chapter?.order}</p>
                 </div>
                 <div className="">
-                  <button onClick= {()=> {setOpen(true);setChapterId(chapter._id);setChapterTitle(chapter.title)}  }><img src="../img/puntos.png" alt="" /></button>
+                  <button onClick={() => { setOpen(true); setChapterId(chapter._id); setChapterTitle(chapter.title) }}><img src="../img/puntos.png" alt="" /></button>
                 </div>
               </div>
               <Link
@@ -74,11 +74,11 @@ const Chapters = () => {
               >
                 Read
               </Link>
-              
+
             </div>
           ))
           : null}
-          {open && <ListComments open={open} setOpen={setOpen} chapter_id={chapterId} chapterName={chapterTitle} />}
+        {open && <ListComments open={open} setOpen={setOpen} chapter_id={chapterId} chapterName={chapterTitle} />}
       </div>
     </>
   );

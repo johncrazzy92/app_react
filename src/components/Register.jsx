@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import NavBar from '../layouts/NavBar';
 import Footer from './Footer';
 import Alert from './componentesMangas/Alert';
-import { GoogleLogin } from '@react-oauth/google'; 
-import { useDispatch } from 'react-redux'; 
-import saveAuthors from '../redux/actions/me_authors'; 
+import { GoogleLogin } from '@react-oauth/google';
+import { useDispatch } from 'react-redux';
+import saveAuthors from '../redux/actions/me_authors';
 import Swal from 'sweetalert2';
 
 const Register = () => {
@@ -43,7 +43,7 @@ const Register = () => {
 
     try {
       setShow(!show);
-      const response = await axios.post('http://localhost:8080/auth/register', data);
+      const response = await axios.post('https://backendminga.onrender.com/auth/register', data);
       setAlert([response.data.message]);
 
       console.log('Solicitud exitosa:', response);
@@ -59,7 +59,7 @@ const Register = () => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8080/auth/google-signin', data);
+      const res = await axios.post('https://backendminga.onrender.com/auth/google-signin', data);
       let token = res.data.response;
       dispatch(saveAuthors(token));
       localStorage.setItem('token', res.data.response.token);

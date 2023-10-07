@@ -25,7 +25,7 @@ const Mangas = () => {
   const arrayCategories = () => (check ? check.toString() : "");
 
   const getMangas = () => {
-    axios(`http://localhost:8080/mangas/?page=${page}&title=${text}&category=${arrayCategories()}`)
+    axios(`https://backendminga.onrender.com/mangas/?page=${page}&title=${text}&category=${arrayCategories()}`)
       .then((res) => {
         if (res.data.mangas.length === 0) {
           setNoElements(true);
@@ -34,16 +34,17 @@ const Mangas = () => {
           setNoElements(false);
         }
         if (res && res.data && res.data.mangas) {
-        setMangas(res.data.mangas);
-        setPageActual(res.data.page);
-        setPrev(res.data.prev);
-        setNext(res.data.next);}
+          setMangas(res.data.mangas);
+          setPageActual(res.data.page);
+          setPrev(res.data.prev);
+          setNext(res.data.next);
+        }
       })
       .catch((err) => console.log(err));
   };
 
   const getCategories = async () =>
-    axios(`http://localhost:8080/categories`)
+    axios(`https://backendminga.onrender.com/categories`)
       .then((res) => {
         setCategories(res.data.response);
         console.log(res.data);

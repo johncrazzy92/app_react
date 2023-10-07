@@ -6,20 +6,20 @@ import ArrowBack from "./ArrowBack";
 const Carousel = () => {
   const [categories, setCategories] = useState([]);
 
-  async function getCategoriesData(){
+  async function getCategoriesData() {
     try {
-      let {data} = await axios("http://localhost:8080/categories")
+      let { data } = await axios("https://backendminga.onrender.com/categories")
       setCategories(data.response)
-      
+
     } catch (error) {
       console.log(error)
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getCategoriesData()
-  
-  },[])
-  
+
+  }, [])
+
   let [counter, setCounter] = useState(0);
   let next = () =>
     counter < categories.length - 1 ? setCounter(counter + 1) : setCounter(0);

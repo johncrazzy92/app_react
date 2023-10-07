@@ -26,7 +26,7 @@ const EditChapter = () => {
   const getManga = async () => {
     try {
       let mangaById = await axios.get(
-        'http://localhost:8080/chapters/me?manga_id=' + idParams,
+        'https://backendminga.onrender.com/chapters/me?manga_id=' + idParams,
         {
           headers: {
             Authorization: 'Bearer ' + token,

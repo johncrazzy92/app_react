@@ -3,7 +3,7 @@ import axios from "axios";
 
 const createComment = createAsyncThunk('createComentario', async (info, { rejectWithValue }) => {
     try {
-        const res = await axios.post('http://localhost:8080/comments', info, {
+        const res = await axios.post('https://backendminga.onrender.com/comments', info, {
             headers: {
                 Authorization: "Bearer " + info.token
             },

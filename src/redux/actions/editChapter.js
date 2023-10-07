@@ -6,7 +6,7 @@ const editChapterAction = createAsyncThunk(
   async ({ id, info, token }) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/chapters/${id}?manga_id=65117d91d875b6549eeb2b41`,
+        `https://backendminga.onrender.com/chapters/${id}?manga_id=65117d91d875b6549eeb2b41`,
         info,
         {
           headers: {
@@ -16,7 +16,7 @@ const editChapterAction = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      
+
       throw error;
     }
   }

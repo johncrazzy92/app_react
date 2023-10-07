@@ -24,7 +24,7 @@ const Login = () => {
     }
     try {
 
-      const credenciales = await axios.post("http://localhost:8080/auth/signin", data)
+      const credenciales = await axios.post("https://backendminga.onrender.com/auth/signin", data)
       let token = credenciales.data.response
       dispatch(saveAuthors(token)),
         localStorage.setItem('token', credenciales.data.response.token)
@@ -41,19 +41,19 @@ const Login = () => {
   }
 
   const handleLogin = async (googleData) => {
-    
+
     const data = {
       token: googleData.credential,
     };
-  
+
     try {
-      const res = await axios.post('http://localhost:8080/auth/google-signin', data);
+      const res = await axios.post('https://backendminga.onrender.com/auth/google-signin', data);
       let token = res.data.response;
       dispatch(saveAuthors(token));
       localStorage.setItem('token', res.data.response.token);
       localStorage.setItem('user', res.data.response.user.email);
       navigate("/");
-  
+
       if (res.data.response.user.created) {
         // Mostrar una alerta de registro exitoso si el usuario se acaba de crear
         Swal.fire({
@@ -73,7 +73,7 @@ const Login = () => {
       setShow(!show);
       setAlert([error.response.data.message]);
       console.log(error);
-  
+
       // Mostrar una alerta de error
       Swal.fire({
         icon: 'error',

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const session = createAsyncThunk("sesionCheck", async (token) => {
     try {
-        const response = await axios.post("http://localhost:8080/auth/signinToken", {}, {
+        const response = await axios.post("https://backendminga.onrender.com/auth/signinToken", {}, {
             headers: {
                 Authorization: "Bearer " + token
             }

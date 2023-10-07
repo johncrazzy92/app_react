@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Verify = () => {
 
@@ -11,11 +11,11 @@ const Verify = () => {
         // obtener el codigo de verificacion de la url
         const url = new URL(window.location.href);
         const code = url.searchParams.get("code");
-        
+
         try {
             // enviar el codigo de verificacion al backend
-            const response = await axios.get(`http://localhost:8080/auth/verify/${code}`);
-    
+            const response = await axios.get(`https://backendminga.onrender.com/auth/verify/${code}`);
+
             // si el codigo es correcto, redirigir al login
             navigate("/login")
         } catch (error) {
@@ -24,13 +24,13 @@ const Verify = () => {
         }
     }
 
-    useEffect( () => {
+    useEffect(() => {
         verifyAccount();
     }, [])
-    
+
     return (
         <div>
-        <h1>Verify your email</h1>
+            <h1>Verify your email</h1>
         </div>
     );
 };
